@@ -69,3 +69,28 @@ base: '/quiettoolsapps.com',
 ```
 
 That makes built asset URLs include `/quiettoolsapps.com/`, which is required for images and icons to load correctly on a GitHub Pages project site. When moving to the final custom domain `quiettoolsapps.com`, change the config to the custom domain and remove the base path.
+
+## Real app icons
+
+The app cards are wired to use real icons from:
+
+```text
+public/assets/app-icons/mealcost.png
+public/assets/app-icons/tripquest.png
+public/assets/app-icons/fixlog.png
+public/assets/app-icons/homesteadkeeper.png
+```
+
+If an icon file is missing, the card falls back to the simple placeholder artwork in `public/assets/app-placeholders/`.
+
+To download the live App Store icons for MealCost, TripQuest, and FixLog, run:
+
+```bash
+python3 scripts/download-app-icons.py
+```
+
+Homestead Keeper Planner is coming soon, so add its final icon manually as:
+
+```text
+public/assets/app-icons/homesteadkeeper.png
+```

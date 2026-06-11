@@ -3,19 +3,6 @@ import Button from './Button.astro';
 const base = import.meta.env.BASE_URL;
 ---
 <section class="hero-shell" aria-labelledby="home-hero-title">
-  <div class="hero-scenery" aria-hidden="true">
-    <span class="scenery-glow"></span>
-    <span class="scenery-ridge ridge-back"></span>
-    <span class="scenery-ridge ridge-mid"></span>
-    <span class="scenery-ridge ridge-front"></span>
-    <span class="scenery-forest forest-left"></span>
-    <span class="scenery-forest forest-right"></span>
-    <span class="scenery-lake"></span>
-    <span class="scenery-shimmer shimmer-one"></span>
-    <span class="scenery-shimmer shimmer-two"></span>
-    <span class="scenery-shimmer shimmer-three"></span>
-  </div>
-
   <div class="hero section-pad">
     <div class="hero-copy">
       <p class="eyebrow">Simple apps for useful things.</p>
@@ -28,10 +15,20 @@ const base = import.meta.env.BASE_URL;
       <p class="quiet-line"><span>✧</span> Independent app studio. Built quietly. Used practically.</p>
     </div>
 
-    <div class="hero-art">
-      <div class="orbit orbit-one"></div>
-      <div class="orbit orbit-two"></div>
-      <img src={`${base}assets/quiet-tools-mark.png`} alt="Quiet Tools mountain and lake logo" />
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-backdrop">
+        <span class="halo halo-one"></span>
+        <span class="halo halo-two"></span>
+        <span class="mist-ridge ridge-one"></span>
+        <span class="mist-ridge ridge-two"></span>
+        <span class="water-band"></span>
+        <span class="water-shimmer shimmer-one"></span>
+        <span class="water-shimmer shimmer-two"></span>
+        <span class="water-shimmer shimmer-three"></span>
+        <span class="soft-star star-one"></span>
+        <span class="soft-star star-two"></span>
+      </div>
+      <img class="hero-logo-mark" src={`${base}assets/quiet-tools-mark.png`} alt="" />
     </div>
   </div>
 </section>
