@@ -2,21 +2,36 @@
 import Button from './Button.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<section class="hero section-pad">
-  <div class="hero-copy">
-    <p class="eyebrow">Simple apps for useful things.</p>
-    <h1>Simple apps for useful things.</h1>
-    <p class="hero-subtitle">Quiet Tools builds calm, practical apps for everyday planning, tracking, maintenance, and shared moments.</p>
-    <div class="hero-actions">
-      <Button href={`${base}apps/`}>View our apps</Button>
-      <Button href={`${base}support/`} variant="secondary">Get support</Button>
-    </div>
-    <p class="quiet-line"><span>✧</span> Independent app studio. Built quietly. Used practically.</p>
+<section class="hero-shell" aria-labelledby="home-hero-title">
+  <div class="hero-scenery" aria-hidden="true">
+    <span class="scenery-glow"></span>
+    <span class="scenery-ridge ridge-back"></span>
+    <span class="scenery-ridge ridge-mid"></span>
+    <span class="scenery-ridge ridge-front"></span>
+    <span class="scenery-forest forest-left"></span>
+    <span class="scenery-forest forest-right"></span>
+    <span class="scenery-lake"></span>
+    <span class="scenery-shimmer shimmer-one"></span>
+    <span class="scenery-shimmer shimmer-two"></span>
+    <span class="scenery-shimmer shimmer-three"></span>
   </div>
-  <div class="hero-art">
-    <div class="orbit orbit-one"></div>
-    <div class="orbit orbit-two"></div>
-    <img src={`${base}assets/quiet-tools-mark.png`} alt="Quiet Tools mountain and lake logo" />
-    <div class="reflection-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <div class="hero section-pad">
+    <div class="hero-copy">
+      <p class="eyebrow">Simple apps for useful things.</p>
+      <h1 id="home-hero-title">Simple apps for useful things.</h1>
+      <p class="hero-subtitle">Quiet Tools builds calm, practical apps for everyday planning, tracking, maintenance, and shared moments.</p>
+      <div class="hero-actions">
+        <Button href={`${base}apps/`}>View our apps</Button>
+        <Button href={`${base}support/`} variant="secondary">Get support</Button>
+      </div>
+      <p class="quiet-line"><span>✧</span> Independent app studio. Built quietly. Used practically.</p>
+    </div>
+
+    <div class="hero-art">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <img src={`${base}assets/quiet-tools-mark.png`} alt="Quiet Tools mountain and lake logo" />
+    </div>
   </div>
 </section>
