@@ -1,0 +1,6 @@
+---
+interface Props { status: 'available' | 'coming-soon' | 'in-development'; }
+const { status } = Astro.props;
+const label = status === 'available' ? 'Available' : status === 'coming-soon' ? 'Coming soon' : 'In development';
+---
+<span class:list={['badge', `badge-${status}`]}>{label}</span>

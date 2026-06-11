@@ -1,0 +1,23 @@
+---
+import Layout from '../components/Layout.astro';
+import AppGrid from '../components/AppGrid.astro';
+import CalmBackground from '../components/CalmBackground.astro';
+import { categories } from '../data/apps';
+---
+<Layout title="Apps — Quiet Tools" description="A growing collection of calm, practical apps from Quiet Tools.">
+  <CalmBackground />
+  <section class="page-hero">
+    <p class="section-eyebrow">Apps</p>
+    <h1>A growing collection of calm, practical apps.</h1>
+    <p>Quiet Tools apps are built for useful everyday moments: knowing what meals cost, making road trips more fun, keeping maintenance records, and managing a busy homestead.</p>
+  </section>
+  <div class="filter-strip" aria-label="App categories">
+    <span class="filter-chip is-active">All apps</span>
+    <span class="filter-chip">Available</span>
+    <span class="filter-chip">Coming soon</span>
+    {categories.map((category) => <span class="filter-chip">{category}</span>)}
+  </div>
+  <section class="section-pad" style="padding-top:0;">
+    <AppGrid />
+  </section>
+</Layout>

@@ -1,0 +1,22 @@
+---
+import Badge from './Badge.astro';
+import type { QuietToolApp } from '../data/apps';
+interface Props { app: QuietToolApp; featured?: boolean; }
+const { app, featured = false } = Astro.props;
+---
+<article class:list={['app-card', featured && 'app-card-featured']} style={`--accent:${app.accent || '#6FAFC0'}`}>
+  <div class="app-art" aria-hidden="true">
+    {app.image ? <img src={app.image} alt="" /> : <span>{app.name.slice(0, 1)}</span>}
+  </div>
+  <div class="app-card-header">
+    <span class="app-category">{app.category}</span>
+    <Badge status={app.status} />
+  </div>
+  <h3>{app.name}</h3>
+  <p class="tagline">{app.shortTagline}</p>
+  <p>{app.description}</p>
+  <div class="feature-chips">
+    {app.features.slice(0, featured ? 7 : 4).map((feature) => <span>{feature}</span>)}
+  </div>
+  {app.websiteUrl && <a class="text-link" href={app.websiteUrl}>Visit {app.name.replace(' Planner', '')} <span aria-hidden="true">→</span></a>}
+</article>

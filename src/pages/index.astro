@@ -1,0 +1,42 @@
+---
+import Layout from '../components/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AppGrid from '../components/AppGrid.astro';
+import StudioPrinciple from '../components/StudioPrinciple.astro';
+import Button from '../components/Button.astro';
+import CalmBackground from '../components/CalmBackground.astro';
+---
+<Layout>
+  <CalmBackground />
+  <Hero />
+
+  <section class="section-pad intro-grid">
+    <div class="intro-copy">
+      <p class="section-eyebrow">Software that helps without getting in the way.</p>
+      <h2>Quiet software for real life.</h2>
+      <p>Quiet Tools LLC is an independent app studio focused on small, useful software for real life. We build focused apps that are easy to understand, pleasant to use, and useful over time.</p>
+    </div>
+    <div class="principles" aria-label="Quiet Tools principles">
+      <StudioPrinciple title="Focused" icon="◎">Each app is built around a real problem, not a pile of unnecessary features.</StudioPrinciple>
+      <StudioPrinciple title="Practical" icon="◒">Made for everyday use: meals, games, maintenance, records, planning, and more.</StudioPrinciple>
+      <StudioPrinciple title="Calm by design" icon="≋">The software should help you think clearly, not create more noise.</StudioPrinciple>
+    </div>
+  </section>
+
+  <section class="apps-section section-pad" style="max-width:none;">
+    <div class="section-heading">
+      <p class="section-eyebrow">Apps from Quiet Tools</p>
+      <h2>Calm, practical apps for everyday life.</h2>
+      <p>A growing collection of apps for planning, tracking, maintenance, shared moments, and the small details worth keeping organized.</p>
+    </div>
+    <AppGrid featured />
+    <div class="future-band">
+      <div class="future-icon" aria-hidden="true">🌱</div>
+      <div>
+        <h2>More quiet tools are on the way.</h2>
+        <p>Quiet Tools is a growing collection of apps. Each one starts with a simple question: what useful thing could be easier, calmer, or better organized?</p>
+      </div>
+      <Button href="/apps/" variant="secondary">View all apps</Button>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,9 @@
+---
+interface Props { title: string; icon: string; }
+const { title, icon } = Astro.props;
+---
+<article class="principle-card">
+  <div class="principle-icon" aria-hidden="true">{icon}</div>
+  <h3>{title}</h3>
+  <p><slot /></p>
+</article>

@@ -1,0 +1,38 @@
+---
+import Layout from '../components/Layout.astro';
+import CalmBackground from '../components/CalmBackground.astro';
+import { apps } from '../data/apps';
+---
+<Layout title="Support — Quiet Tools" description="Get support for Quiet Tools apps.">
+  <CalmBackground />
+  <section class="page-hero">
+    <p class="section-eyebrow">Support</p>
+    <h1>Need help with a Quiet Tools app?</h1>
+    <p>Send a message with the app name, your device type, operating system version, and a short description of the issue.</p>
+  </section>
+  <section class="info-grid">
+    <article class="info-card">
+      <h2>Contact</h2>
+      <p>For company-level support, email:</p>
+      <p><a href="mailto:support@quiettoolsapps.com">support@quiettoolsapps.com</a></p>
+      <p>Including a few details up front helps us understand the issue more quickly.</p>
+    </article>
+    <article class="info-card">
+      <h2>Helpful details</h2>
+      <ul>
+        <li>App name</li>
+        <li>Device model</li>
+        <li>iOS, iPadOS, or macOS version</li>
+        <li>What you were trying to do</li>
+        <li>What happened instead</li>
+        <li>Screenshots, if helpful</li>
+      </ul>
+    </article>
+    <article class="info-card" style="grid-column: 1 / -1;">
+      <h2>App support links</h2>
+      <ul>
+        {apps.map((app) => <li><a href={app.supportUrl || app.websiteUrl}>{app.name}</a></li>)}
+      </ul>
+    </article>
+  </section>
+</Layout>

@@ -1,0 +1,38 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Quiet Tools — Simple Apps for Useful Things',
+  description = 'Quiet Tools LLC builds calm, practical apps for meals, road trip games, maintenance records, homestead planning, and more.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quiettoolsapps.com" />
+    <meta property="og:image" content="/assets/quiet-tools-logo.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

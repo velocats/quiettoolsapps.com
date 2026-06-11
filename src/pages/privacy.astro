@@ -1,0 +1,46 @@
+---
+import Layout from '../components/Layout.astro';
+import CalmBackground from '../components/CalmBackground.astro';
+import { apps } from '../data/apps';
+---
+<Layout title="Privacy — Quiet Tools" description="Privacy information for Quiet Tools LLC apps.">
+  <CalmBackground />
+  <section class="page-hero">
+    <p class="section-eyebrow">Privacy</p>
+    <h1>Plain-language privacy information.</h1>
+    <p><strong>Quiet Tools apps are designed to minimize unnecessary data collection.</strong> App data generally stays on your device unless you choose to export, share, back up, sync, or use a feature that requires an outside service.</p>
+  </section>
+  <section class="info-grid">
+    <article class="info-card">
+      <h2>Overview</h2>
+      <p>Quiet Tools LLC builds practical apps and aims to avoid collecting data that is not needed for the app to function, support customers, or meet App Store requirements.</p>
+    </article>
+    <article class="info-card">
+      <h2>App data</h2>
+      <p>Many Quiet Tools apps store the information you enter on your device. Some features may allow exporting, sharing, syncing, backup, or use of services provided by Apple or other platforms.</p>
+    </article>
+    <article class="info-card">
+      <h2>Device storage and backups</h2>
+      <p>Data stored on your device may be included in device backups depending on your device settings, Apple services, and the specific app configuration.</p>
+    </article>
+    <article class="info-card">
+      <h2>iCloud or sync features</h2>
+      <p>If a specific app uses iCloud or syncing, that app’s dedicated privacy information should explain how it works. This company page does not replace app-specific privacy disclosures.</p>
+    </article>
+    <article class="info-card">
+      <h2>Email support</h2>
+      <p>If you email support, Quiet Tools receives the information you choose to include, such as your email address, screenshots, device details, and issue description.</p>
+    </article>
+    <article class="info-card">
+      <h2>App Store information</h2>
+      <p>Apple may provide developers with aggregate App Store information and diagnostics according to Apple’s policies and your device settings.</p>
+    </article>
+    <article class="info-card" style="grid-column: 1 / -1;">
+      <h2>App-specific privacy links</h2>
+      <ul>
+        {apps.map((app) => <li><a href={app.privacyUrl || app.websiteUrl}>{app.name}</a></li>)}
+      </ul>
+      <p>Questions? Contact <a href="mailto:support@quiettoolsapps.com">support@quiettoolsapps.com</a>.</p>
+    </article>
+  </section>
+</Layout>

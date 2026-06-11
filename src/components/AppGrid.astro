@@ -1,0 +1,10 @@
+---
+import AppCard from './AppCard.astro';
+import { apps } from '../data/apps';
+interface Props { featured?: boolean; }
+const { featured = false } = Astro.props;
+const list = featured ? apps.slice(0, 4) : apps;
+---
+<div class="app-grid">
+  {list.map((app) => <AppCard app={app} featured={featured} />)}
+</div>
