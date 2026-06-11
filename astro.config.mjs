@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://quiettoolsapps.com',
+  site: 'https://www.quiettoolsapps.com',
+  integrations: [sitemap()],
 });

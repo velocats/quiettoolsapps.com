@@ -146,3 +146,48 @@ h3 { font-size: 1.25rem; letter-spacing: -.03em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Refinements after first live pass: cleaner circular logo and tighter homepage rhythm */
+.brand-mark,
+.footer-brand img {
+  border-radius: 999px;
+  object-fit: cover;
+  background: transparent;
+}
+
+.hero.section-pad {
+  padding-top: clamp(2.25rem, 5vw, 4.5rem);
+  padding-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.hero {
+  min-height: clamp(560px, 66vh, 720px);
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.hero-art {
+  min-height: clamp(380px, 48vw, 520px);
+}
+
+.hero-art img {
+  width: min(92%, 500px);
+  border-radius: 999px;
+}
+
+.intro-grid.section-pad {
+  padding-top: clamp(2.75rem, 5vw, 4.5rem);
+  padding-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.apps-section.section-pad {
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+}
+
+@media (max-width: 980px) {
+  .hero {
+    min-height: auto;
+  }
+  .hero-art {
+    min-height: clamp(300px, 62vw, 420px);
+  }
+}
