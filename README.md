@@ -1,6 +1,6 @@
 # Quiet Tools Website
 
-Company website for **Quiet Tools LLC** at `quiettoolsapps.com`.
+Company website for **Quiet Tools** at `quiettoolsapps.com`.
 
 Built with Astro as a fast static site. The app portfolio is data-driven from `src/data/apps.ts`, so future Quiet Tools apps can be added without redesigning the site.
 
@@ -36,7 +36,7 @@ Edit `src/data/apps.ts` and add another object to the `apps` array:
   features: ['Feature one', 'Feature two'],
   category: 'Category',
   websiteUrl: 'https://example.com/',
-  image: '/assets/app-placeholders/new-app.svg',
+  image: 'assets/app-placeholders/new-app.svg',
   accent: '#6FAFC0',
 }
 ```
@@ -52,3 +52,20 @@ The selected Quiet Tools logo assets live in:
 - `public/assets/quiet-tools-logo.png`
 - `public/assets/quiet-tools-mark.png`
 - `public/assets/favicon.png`
+
+## GitHub Pages base path
+
+This project is currently configured for GitHub Pages at:
+
+```text
+https://velocats.github.io/quiettoolsapps.com/
+```
+
+The `astro.config.mjs` file includes:
+
+```js
+site: 'https://velocats.github.io',
+base: '/quiettoolsapps.com',
+```
+
+That makes built asset URLs include `/quiettoolsapps.com/`, which is required for images and icons to load correctly on a GitHub Pages project site. When moving to the final custom domain `quiettoolsapps.com`, change the config to the custom domain and remove the base path.

@@ -5,6 +5,7 @@ import AppGrid from '../components/AppGrid.astro';
 import StudioPrinciple from '../components/StudioPrinciple.astro';
 import Button from '../components/Button.astro';
 import CalmBackground from '../components/CalmBackground.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Layout>
   <CalmBackground />
@@ -14,7 +15,7 @@ import CalmBackground from '../components/CalmBackground.astro';
     <div class="intro-copy">
       <p class="section-eyebrow">Software that helps without getting in the way.</p>
       <h2>Quiet software for real life.</h2>
-      <p>Quiet Tools LLC is an independent app studio focused on small, useful software for real life. We build focused apps that are easy to understand, pleasant to use, and useful over time.</p>
+      <p>Quiet Tools is an independent app studio focused on small, useful software for real life. We build focused apps that are easy to understand, pleasant to use, and useful over time.</p>
     </div>
     <div class="principles" aria-label="Quiet Tools principles">
       <StudioPrinciple title="Focused" icon="◎">Each app is built around a real problem, not a pile of unnecessary features.</StudioPrinciple>
@@ -36,7 +37,7 @@ import CalmBackground from '../components/CalmBackground.astro';
         <h2>More quiet tools are on the way.</h2>
         <p>Quiet Tools is a growing collection of apps. Each one starts with a simple question: what useful thing could be easier, calmer, or better organized?</p>
       </div>
-      <Button href="/apps/" variant="secondary">View all apps</Button>
+      <Button href={`${base}apps/`} variant="secondary">View all apps</Button>
     </div>
   </section>
 </Layout>

@@ -10,8 +10,12 @@ interface Props {
 
 const {
   title = 'Quiet Tools — Simple Apps for Useful Things',
-  description = 'Quiet Tools LLC builds calm, practical apps for meals, road trip games, maintenance records, homestead planning, and more.',
+  description = 'Quiet Tools builds calm, practical apps for meals, road trip games, maintenance records, homestead planning, and more.',
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const canonicalUrl = new URL(base, Astro.site).toString();
+const ogImageUrl = new URL(`${base}assets/quiet-tools-logo.png`, Astro.site).toString();
 ---
 <!doctype html>
 <html lang="en">
@@ -23,9 +27,9 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://quiettoolsapps.com" />
-    <meta property="og:image" content="/assets/quiet-tools-logo.png" />
-    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <link rel="icon" type="image/png" href={`${base}assets/favicon.png`} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

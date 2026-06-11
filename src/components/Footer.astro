@@ -1,6 +1,9 @@
+---
+const base = import.meta.env.BASE_URL;
+---
 <footer class="site-footer">
   <div class="footer-brand">
-    <img src="/assets/quiet-tools-mark.png" alt="Quiet Tools logo mark" />
+    <img src={`${base}assets/quiet-tools-mark.png`} alt="Quiet Tools logo mark" />
     <div>
       <strong>Quiet Tools</strong>
       <p>Simple apps for useful things.</p>
@@ -9,13 +12,13 @@
   <div class="footer-columns">
     <div>
       <h2>Navigation</h2>
-      <a href="/apps/">Apps</a>
-      <a href="/support/">Support</a>
-      <a href="/privacy/">Privacy</a>
+      <a href={`${base}apps/`}>Apps</a>
+      <a href={`${base}support/`}>Support</a>
+      <a href={`${base}privacy/`}>Privacy</a>
     </div>
     <div>
       <h2>Company</h2>
-      <p>Quiet Tools LLC</p>
+      <p>Quiet Tools</p>
       <p>Independent app studio</p>
       <p>quiettoolsapps.com</p>
     </div>
@@ -25,5 +28,5 @@
       <a href="mailto:support@quiettoolsapps.com">support@quiettoolsapps.com</a>
     </div>
   </div>
-  <p class="copyright">© {new Date().getFullYear()} Quiet Tools LLC. All rights reserved.</p>
+  <p class="copyright">© {new Date().getFullYear()} Quiet Tools. All rights reserved.</p>
 </footer>

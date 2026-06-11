@@ -1,5 +1,6 @@
 ---
 import Button from './Button.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <section class="hero section-pad">
   <div class="hero-copy">
@@ -7,15 +8,15 @@ import Button from './Button.astro';
     <h1>Simple apps for useful things.</h1>
     <p class="hero-subtitle">Quiet Tools builds calm, practical apps for everyday planning, tracking, maintenance, and shared moments.</p>
     <div class="hero-actions">
-      <Button href="/apps/">View our apps</Button>
-      <Button href="/support/" variant="secondary">Get support</Button>
+      <Button href={`${base}apps/`}>View our apps</Button>
+      <Button href={`${base}support/`} variant="secondary">Get support</Button>
     </div>
     <p class="quiet-line"><span>✧</span> Independent app studio. Built quietly. Used practically.</p>
   </div>
   <div class="hero-art">
     <div class="orbit orbit-one"></div>
     <div class="orbit orbit-two"></div>
-    <img src="/assets/quiet-tools-mark.png" alt="Quiet Tools mountain and lake logo" />
+    <img src={`${base}assets/quiet-tools-mark.png`} alt="Quiet Tools mountain and lake logo" />
     <div class="reflection-lines" aria-hidden="true"><span></span><span></span><span></span></div>
   </div>
 </section>
