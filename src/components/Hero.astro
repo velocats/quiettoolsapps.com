@@ -2,7 +2,9 @@
 import Button from './Button.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<section class="hero-shell" aria-labelledby="home-hero-title">
+<section class="hero-shell" aria-labelledby="home-hero-title" style={`--hero-art:url('${base}assets/hero-illustration.png')`}>
+  <div class="hero-visual" aria-hidden="true"></div>
+
   <div class="hero section-pad">
     <div class="hero-copy">
       <p class="eyebrow">Simple apps for useful things.</p>
@@ -14,7 +16,5 @@ const base = import.meta.env.BASE_URL;
       </div>
       <p class="quiet-line"><span>✧</span> Independent app studio. Built quietly. Used practically.</p>
     </div>
-
-    <div class="hero-art" aria-hidden="true" style={`--hero-art:url('${base}assets/hero-illustration.png')`}></div>
   </div>
 </section>
