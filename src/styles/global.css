@@ -80,18 +80,28 @@ p { margin: 0; }
 .hero-shell {
   position: relative;
   overflow: hidden;
-  min-height: clamp(600px, 72vh, 760px);
-  background-color: #f8f1e5;
-  background-image: var(--hero-bg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  min-height: clamp(580px, 70vh, 740px);
+  background:
+    radial-gradient(circle at 72% 22%, rgba(255,255,255,.78), transparent 17rem),
+    radial-gradient(circle at 68% 42%, rgba(184,214,211,.38), transparent 30rem),
+    linear-gradient(100deg, #f8f1e5 0%, #fbf6ed 43%, #eaf5f3 100%);
   border-bottom: 1px solid rgba(230,225,216,.72);
+}
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--hero-art);
+  background-repeat: no-repeat;
+  background-position: right 5vw center;
+  background-size: min(56vw, 880px) auto;
+  opacity: .98;
 }
 .hero {
   position: relative;
   z-index: 1;
-  min-height: clamp(600px, 72vh, 760px);
+  min-height: clamp(580px, 70vh, 740px);
   display: flex;
   align-items: center;
   padding-top: clamp(3.3rem, 5vw, 4.8rem);
@@ -178,14 +188,15 @@ p { margin: 0; }
 @keyframes floaty { 0%,100% { transform: translateY(0); opacity: .25; } 50% { transform: translateY(-18px); opacity: .65; } }
 
 @media (max-width: 980px) {
-  .hero-shell {
-    min-height: auto;
-    background-position: 68% top;
-    background-size: auto 520px;
+  .hero-shell { min-height: auto; }
+  .hero-visual {
+    background-position: center top;
+    background-size: min(100vw, 680px) auto;
+    opacity: .45;
   }
   .hero {
     min-height: auto;
-    padding-top: clamp(20rem, 54vw, 30rem);
+    padding-top: clamp(18rem, 54vw, 30rem);
   }
   .app-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .intro-grid { grid-template-columns: 1fr; }
@@ -196,11 +207,8 @@ p { margin: 0; }
   .site-nav { width: 100%; overflow-x: auto; padding-bottom: .25rem; }
   .brand-mark { width: 44px; height: 44px; }
   h1 { font-size: clamp(2.75rem, 15vw, 4rem); }
-  .hero-shell {
-    background-position: 72% top;
-    background-size: auto 390px;
-  }
-  .hero { padding-top: clamp(16rem, 66vw, 23rem); }
+  .hero { padding-top: clamp(15rem, 62vw, 22rem); }
+  .hero-visual { background-size: min(124vw, 560px) auto; opacity: .42; }
   .app-grid, .info-grid, .footer-columns, .future-band { grid-template-columns: 1fr; }
   .future-band { text-align: left; }
 }
