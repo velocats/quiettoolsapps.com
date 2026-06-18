@@ -80,10 +80,11 @@ p { margin: 0; }
 .hero-shell {
   position: relative;
   overflow: hidden;
-  min-height: min(72vh, 720px);
+  min-height: clamp(560px, 68vh, 720px);
   background:
-    radial-gradient(circle at 74% 24%, rgba(255,255,255,.72), transparent 18rem),
-    linear-gradient(100deg, #f8f1e5 0%, #faf5ec 44%, #eef6f5 100%);
+    radial-gradient(circle at 76% 22%, rgba(255,255,255,.82), transparent 18rem),
+    radial-gradient(circle at 73% 35%, rgba(247,232,210,.55), transparent 34rem),
+    linear-gradient(100deg, #f8f1e5 0%, #faf5ec 43%, #e9f4f2 100%);
   border-bottom: 1px solid rgba(230,225,216,.72);
 }
 .hero-visual {
@@ -91,21 +92,20 @@ p { margin: 0; }
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(90deg, rgba(248,241,229,.98) 0%, rgba(248,241,229,.94) 34%, rgba(248,241,229,.42) 51%, rgba(248,241,229,0) 66%),
-    var(--hero-art);
+  background-image: var(--hero-art);
   background-repeat: no-repeat;
-  background-position: center center, right center;
-  background-size: cover, min(62vw, 880px) auto;
+  background-position: right center;
+  background-size: min(68vw, 1060px) auto;
+  opacity: .98;
 }
 .hero {
   position: relative;
   z-index: 1;
-  min-height: min(72vh, 720px);
+  min-height: clamp(560px, 68vh, 720px);
   display: flex;
   align-items: center;
-  padding-top: clamp(3.3rem, 5vw, 4.7rem);
-  padding-bottom: clamp(2.35rem, 3.7vw, 3.2rem);
+  padding-top: clamp(3.1rem, 5vw, 4.6rem);
+  padding-bottom: clamp(2.3rem, 3.6vw, 3rem);
 }
 .hero-copy {
   position: relative;
@@ -190,16 +190,13 @@ p { margin: 0; }
 @media (max-width: 980px) {
   .hero-shell { min-height: auto; }
   .hero-visual {
-    opacity: .92;
-    background-image:
-      linear-gradient(180deg, rgba(248,241,229,.12) 0%, rgba(248,241,229,.76) 48%, rgba(248,241,229,.98) 72%),
-      var(--hero-art);
-    background-position: center top, center top;
-    background-size: cover, min(96vw, 680px) auto;
+    background-position: center top;
+    background-size: min(112vw, 760px) auto;
+    opacity: .55;
   }
   .hero {
     min-height: auto;
-    padding-top: clamp(18rem, 54vw, 30rem);
+    padding-top: clamp(18rem, 55vw, 30rem);
   }
   .app-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .intro-grid { grid-template-columns: 1fr; }
@@ -211,7 +208,7 @@ p { margin: 0; }
   .brand-mark { width: 44px; height: 44px; }
   h1 { font-size: clamp(2.75rem, 15vw, 4rem); }
   .hero { padding-top: clamp(15rem, 62vw, 22rem); }
-  .hero-visual { background-size: cover, min(116vw, 560px) auto; }
+  .hero-visual { background-size: min(132vw, 620px) auto; opacity: .5; }
   .app-grid, .info-grid, .footer-columns, .future-band { grid-template-columns: 1fr; }
   .future-band { text-align: left; }
 }
