@@ -36,8 +36,7 @@ export const apps: QuietToolApp[] = [
     websiteUrl: 'https://www.mealcostapp.com/',
     supportUrl: 'https://www.mealcostapp.com/support.html',
     privacyUrl: 'https://www.mealcostapp.com/privacy.html',
-    image: 'assets/app-icons/mealcost.png',
-    fallbackImage: 'assets/app-placeholders/mealcost.svg',
+    image: 'assets/app-placeholders/mealcost.svg',
     accent: '#F68A45',
   },
   {
@@ -60,8 +59,7 @@ export const apps: QuietToolApp[] = [
     websiteUrl: 'https://www.thetripquestapp.com/',
     supportUrl: 'https://www.thetripquestapp.com/support.html',
     privacyUrl: 'https://www.thetripquestapp.com/privacy.html',
-    image: 'assets/app-icons/tripquest.png',
-    fallbackImage: 'assets/app-placeholders/tripquest.svg',
+    image: 'assets/app-placeholders/tripquest.svg',
     accent: '#6FAFC0',
   },
   {
@@ -83,8 +81,7 @@ export const apps: QuietToolApp[] = [
     websiteUrl: 'https://www.fixlogapp.com/',
     supportUrl: 'https://www.fixlogapp.com/support.html',
     privacyUrl: 'https://www.fixlogapp.com/privacy.html',
-    image: 'assets/app-icons/fixlog.png',
-    fallbackImage: 'assets/app-placeholders/fixlog.svg',
+    image: 'assets/app-placeholders/fixlog.svg',
     accent: '#082B4F',
   },
   {

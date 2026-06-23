@@ -11,13 +11,14 @@ import { categories } from '../data/apps';
     <h1>A growing collection of calm, practical apps.</h1>
     <p>Quiet Tools apps are built for useful everyday moments: knowing what meals cost, making road trips more fun, keeping maintenance records, and managing a busy homestead.</p>
   </section>
-  <div class="filter-strip" aria-label="App categories">
-    <span class="filter-chip is-active">All apps</span>
-    <span class="filter-chip">Available</span>
-    <span class="filter-chip">Coming soon</span>
-    {categories.map((category) => <span class="filter-chip">{category}</span>)}
-  </div>
+  <ul class="filter-strip" aria-label="App categories shown on this page">
+    <li><span class="filter-chip is-active">All apps</span></li>
+    <li><span class="filter-chip">Available</span></li>
+    <li><span class="filter-chip">Coming soon</span></li>
+    {categories.map((category) => <li><span class="filter-chip">{category}</span></li>)}
+  </ul>
   <section class="section-pad" style="padding-top:0;">
+    <h2 class="sr-only">All Quiet Tools apps</h2>
     <AppGrid />
   </section>
 </Layout>
