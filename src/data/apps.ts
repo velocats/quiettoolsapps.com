@@ -90,7 +90,7 @@ export const apps: QuietToolApp[] = [
   {
     name: 'Homestead Keeper Planner',
     slug: 'homestead-keeper-planner',
-    status: 'coming-soon',
+    status: 'available',
     shortTagline: 'A calmer way to manage a busy homestead.',
     description:
       'Homestead Keeper Planner helps organize the many moving parts of a homestead or rural property. It focuses on animals, gardens, equipment, property care, seasonal chores, maintenance, costs, and records.',
@@ -111,5 +111,3 @@ export const apps: QuietToolApp[] = [
     accent: '#7FAFB3',
   },
 ];
-
-export const categories = Array.from(new Set(apps.map((app) => app.category)));

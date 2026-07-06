@@ -177,9 +177,6 @@ p { margin: 0; }
 .page-hero { max-width: var(--max-width); margin-inline: auto; padding: clamp(4rem,8vw,6rem) clamp(1rem,4vw,2rem) clamp(2rem,5vw,4rem); }
 .page-hero h1 { margin-bottom: 1rem; }
 .page-hero p:not(.section-eyebrow) { max-width: 50rem; color: #244968; font-size: 1.15rem; }
-.filter-strip { max-width: var(--max-width); margin: -1rem auto 2rem; padding: 0 clamp(1rem,4vw,2rem); display: flex; flex-wrap: wrap; gap: .7rem; list-style: none; }
-.filter-chip { display: inline-flex; border: 1px solid rgba(8,43,79,.16); background: rgba(255,255,255,.7); color: var(--navy); border-radius: 999px; padding: .55rem .8rem; font-weight: 850; }
-.filter-chip.is-active { background: rgba(111,175,192,.22); border-color: rgba(111,175,192,.8); }
 .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
 .info-card h2 { font-family: var(--font-sans); font-size: 1.25rem; margin-bottom: .55rem; }
 .info-card ul { margin: .65rem 0 0; padding-left: 1.1rem; color: #254a68; }
