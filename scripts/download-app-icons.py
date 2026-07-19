@@ -15,6 +15,7 @@ import urllib.request
 from pathlib import Path
 
 ICON_URLS = {
+    "aroundthehouse": "https://www.aroundthehouseapp.com/assets/icons/around-the-house-icon.png",
     "mealcost": "https://www.mealcostapp.com/MealCostAppIcon.png",
     "tripquest": "https://www.thetripquestapp.com/assets/tripquest-icon.png",
     "fixlog": "https://www.fixlogapp.com/assets/branding/fixlog-logo-1024.png",

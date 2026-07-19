@@ -79,11 +79,12 @@ public/assets/app-icons/mealcost.png
 public/assets/app-icons/tripquest.png
 public/assets/app-icons/fixlog.png
 public/assets/app-icons/homesteadkeeper.png
+public/assets/app-icons/aroundthehouse.png
 ```
 
 If an icon file is missing, the card falls back to the simple placeholder artwork in `public/assets/app-placeholders/`.
 
-To download the live App Store icons for MealCost, TripQuest, and FixLog, run:
+To download the live website icons for the Quiet Tools apps, run:
 
 ```bash
 python3 scripts/download-app-icons.py

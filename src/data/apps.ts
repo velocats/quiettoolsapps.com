@@ -19,6 +19,28 @@ export type QuietToolApp = {
 
 export const apps: QuietToolApp[] = [
   {
+    name: 'Around The House',
+    slug: 'around-the-house',
+    status: 'coming-soon',
+    shortTagline: 'Give your home a memory.',
+    description:
+      'Around The House keeps repairs, reminders, warranties, receipts, photos, notes, service history, costs, and important home details organized in one private app.',
+    features: [
+      'Home item records',
+      'Repairs and reminders',
+      'Receipts and warranties',
+      'Photos and notes',
+      'Reports and cost tracking',
+      'Private iCloud sync',
+    ],
+    category: 'Home & maintenance',
+    websiteUrl: 'https://www.aroundthehouseapp.com/',
+    supportUrl: 'https://www.aroundthehouseapp.com/support/',
+    privacyUrl: 'https://www.aroundthehouseapp.com/privacy/',
+    image: 'assets/app-icons/aroundthehouse.png',
+    accent: '#244C42',
+  },
+  {
     name: 'MealCost',
     slug: 'mealcost',
     status: 'available',
