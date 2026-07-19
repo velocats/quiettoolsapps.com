@@ -210,10 +210,11 @@ p { margin: 0; }
 .apps-section.section-pad { padding-top: clamp(2.6rem, 5vw, 4rem); padding-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section-heading { max-width: var(--max-width); margin-inline: auto; padding: 0 clamp(1rem,4vw,2rem) 2rem; text-align: center; }
 .section-heading p:not(.section-eyebrow) { max-width: 48rem; margin: .8rem auto 0; color: #31536c; }
-.app-carousel { max-width: var(--max-width); margin-inline: auto; overflow: hidden; outline: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 clamp(1.25rem,4vw,3rem), #000 calc(100% - clamp(1.25rem,4vw,3rem)), transparent); mask-image: linear-gradient(90deg, transparent, #000 clamp(1.25rem,4vw,3rem), #000 calc(100% - clamp(1.25rem,4vw,3rem)), transparent); }
+.app-carousel { max-width: var(--max-width); margin-inline: auto; overflow-x: auto; overflow-y: hidden; outline: none; cursor: grab; scrollbar-width: none; touch-action: pan-x; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(90deg, transparent, #000 clamp(1.25rem,4vw,3rem), #000 calc(100% - clamp(1.25rem,4vw,3rem)), transparent); mask-image: linear-gradient(90deg, transparent, #000 clamp(1.25rem,4vw,3rem), #000 calc(100% - clamp(1.25rem,4vw,3rem)), transparent); }
+.app-carousel::-webkit-scrollbar { display: none; }
+.app-carousel.is-dragging { cursor: grabbing; user-select: none; }
 .app-carousel:focus-visible { box-shadow: 0 0 0 3px rgba(38,116,135,.28); border-radius: var(--radius); }
-.app-carousel-track { display: flex; width: max-content; animation: app-scroll 70s linear infinite; }
-.app-carousel:hover .app-carousel-track, .app-carousel:focus-within .app-carousel-track { animation-play-state: paused; }
+.app-carousel-track { display: flex; width: max-content; }
 .app-grid { display: flex; align-items: stretch; gap: 1rem; padding: 0 .5rem; }
 .app-card { width: clamp(250px, 20vw, 300px); flex: 0 0 auto; }
 .app-grid-copy { padding-left: .5rem; }
@@ -265,7 +266,6 @@ p { margin: 0; }
 .hill { display: none; }
 
 @keyframes floaty { 0%,100% { transform: translateY(0); opacity: .25; } 50% { transform: translateY(-18px); opacity: .65; } }
-@keyframes app-scroll { to { transform: translateX(-50%); } }
 
 @media (max-width: 980px) {
   .hero-shell { min-height: auto; }

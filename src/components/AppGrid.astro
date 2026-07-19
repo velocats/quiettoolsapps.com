@@ -8,7 +8,7 @@ const { featured = false } = Astro.props;
   class:list={['app-carousel', featured && 'app-carousel-featured']}
   tabindex="0"
   role="region"
-  aria-label="Quiet Tools apps — moving carousel; hover or focus to pause"
+  aria-label="Quiet Tools apps — swipe or drag in either direction"
 >
   <div class="app-carousel-track">
     <div class="app-grid">
@@ -19,3 +19,95 @@ const { featured = false } = Astro.props;
     </div>
   </div>
 </div>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('.app-carousel').forEach((carousel) => {
+    if (carousel.dataset.dragReady) return;
+    carousel.dataset.dragReady = 'true';
+
+    const track = carousel.querySelector<HTMLElement>('.app-carousel-track');
+    if (!track) return;
+
+    let dragging = false;
+    let dragged = false;
+    let pointerStart = 0;
+    let previousPointer = 0;
+    let hovering = false;
+    let lastTime = performance.now();
+    const autoSpeed = 22;
+
+    const loopWidth = () => track.scrollWidth / 2;
+
+    const centerOnLoop = () => {
+      if (!reducedMotion.matches && loopWidth() > 0 && carousel.scrollLeft === 0) {
+        carousel.scrollLeft = loopWidth();
+      }
+    };
+
+    requestAnimationFrame(centerOnLoop);
+    window.addEventListener('load', centerOnLoop, { once: true });
+
+    const keepInLoop = () => {
+      if (reducedMotion.matches) return;
+      const width = loopWidth();
+      if (!width) return;
+      if (carousel.scrollLeft < width * 0.5) carousel.scrollLeft += width;
+      if (carousel.scrollLeft > width * 1.5) carousel.scrollLeft -= width;
+    };
+
+    const animate = (time: number) => {
+      const elapsed = Math.min(time - lastTime, 50) / 1000;
+      lastTime = time;
+      const focused = carousel.contains(document.activeElement);
+      if (!reducedMotion.matches && !dragging && !hovering && !focused) {
+        carousel.scrollLeft += autoSpeed * elapsed;
+        keepInLoop();
+      }
+      requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+
+    carousel.addEventListener('mouseenter', () => { hovering = true; });
+    carousel.addEventListener('mouseleave', () => { hovering = false; });
+
+    carousel.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      dragging = true;
+      dragged = false;
+      pointerStart = event.clientX;
+      previousPointer = event.clientX;
+      carousel.setPointerCapture(event.pointerId);
+      carousel.classList.add('is-dragging');
+    });
+
+    carousel.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      if (Math.abs(event.clientX - pointerStart) > 5) dragged = true;
+      carousel.scrollLeft -= event.clientX - previousPointer;
+      previousPointer = event.clientX;
+      keepInLoop();
+      if (dragged) event.preventDefault();
+    });
+
+    const stopDragging = (event: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      carousel.classList.remove('is-dragging');
+      if (carousel.hasPointerCapture(event.pointerId)) carousel.releasePointerCapture(event.pointerId);
+    };
+    carousel.addEventListener('pointerup', stopDragging);
+    carousel.addEventListener('pointercancel', stopDragging);
+
+    carousel.addEventListener('click', (event) => {
+      if (dragged) {
+        event.preventDefault();
+        event.stopPropagation();
+        dragged = false;
+      }
+    }, true);
+
+    carousel.addEventListener('scroll', keepInLoop, { passive: true });
+  });
+</script>
