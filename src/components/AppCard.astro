@@ -1,12 +1,12 @@
 ---
 import Badge from './Badge.astro';
 import type { QuietToolApp } from '../data/apps';
-interface Props { app: QuietToolApp; featured?: boolean; }
-const { app, featured = false } = Astro.props;
+interface Props { app: QuietToolApp; featured?: boolean; idPrefix?: string; }
+const { app, featured = false, idPrefix = 'app' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const imageSrc = app.image ? `${base}${app.image}` : '';
 const fallbackSrc = app.fallbackImage ? `${base}${app.fallbackImage}` : '';
-const titleId = `app-${app.slug}-title`;
+const titleId = `${idPrefix}-${app.slug}-title`;
 ---
 <article class:list={['app-card', featured && 'app-card-featured']} style={`--accent:${app.accent || '#6FAFC0'}`} aria-labelledby={titleId}>
   <div class="app-art">

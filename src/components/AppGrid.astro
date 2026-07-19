@@ -3,8 +3,19 @@ import AppCard from './AppCard.astro';
 import { apps } from '../data/apps';
 interface Props { featured?: boolean; }
 const { featured = false } = Astro.props;
-const list = featured ? apps.slice(0, 4) : apps;
 ---
-<div class="app-grid">
-  {list.map((app) => <AppCard app={app} featured={featured} />)}
+<div
+  class:list={['app-carousel', featured && 'app-carousel-featured']}
+  tabindex="0"
+  role="region"
+  aria-label="Quiet Tools apps — moving carousel; hover or focus to pause"
+>
+  <div class="app-carousel-track">
+    <div class="app-grid">
+      {apps.map((app) => <AppCard app={app} featured={featured} />)}
+    </div>
+    <div class="app-grid app-grid-copy" aria-hidden="true" inert>
+      {apps.map((app) => <AppCard app={app} featured={featured} idPrefix="app-copy" />)}
+    </div>
+  </div>
 </div>
