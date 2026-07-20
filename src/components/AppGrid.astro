@@ -17,8 +17,8 @@ const { featured = false } = Astro.props;
       <div class="app-grid">
         {apps.map((app) => <AppCard app={app} featured={featured} />)}
       </div>
-      <div class="app-grid app-grid-copy" aria-hidden="true" inert>
-        {apps.map((app) => <AppCard app={app} featured={featured} idPrefix="app-copy" />)}
+      <div class="app-grid app-grid-copy" aria-hidden="true">
+        {apps.map((app) => <AppCard app={app} featured={featured} idPrefix="app-copy" duplicate />)}
       </div>
     </div>
   </div>
