@@ -6,18 +6,25 @@ const { featured = false } = Astro.props;
 ---
 <div
   class:list={['app-carousel', featured && 'app-carousel-featured']}
-  tabindex="0"
   role="region"
   aria-label="Quiet Tools apps — swipe or drag in either direction"
 >
-  <div class="app-carousel-track">
-    <div class="app-grid">
-      {apps.map((app) => <AppCard app={app} featured={featured} />)}
-    </div>
-    <div class="app-grid app-grid-copy" aria-hidden="true" inert>
-      {apps.map((app) => <AppCard app={app} featured={featured} idPrefix="app-copy" />)}
+  <button class="app-carousel-arrow app-carousel-arrow-left" type="button" aria-label="Show previous app">
+    <span aria-hidden="true">‹</span>
+  </button>
+  <div class="app-carousel-window" tabindex="0">
+    <div class="app-carousel-track">
+      <div class="app-grid">
+        {apps.map((app) => <AppCard app={app} featured={featured} />)}
+      </div>
+      <div class="app-grid app-grid-copy" aria-hidden="true" inert>
+        {apps.map((app) => <AppCard app={app} featured={featured} idPrefix="app-copy" />)}
+      </div>
     </div>
   </div>
+  <button class="app-carousel-arrow app-carousel-arrow-right" type="button" aria-label="Show next app">
+    <span aria-hidden="true">›</span>
+  </button>
 </div>
 
 <script>
@@ -27,8 +34,9 @@ const { featured = false } = Astro.props;
     if (carousel.dataset.dragReady) return;
     carousel.dataset.dragReady = 'true';
 
+    const scrollPort = carousel.querySelector<HTMLElement>('.app-carousel-window');
     const track = carousel.querySelector<HTMLElement>('.app-carousel-track');
-    if (!track) return;
+    if (!track || !scrollPort) return;
 
     let dragging = false;
     let dragged = false;
@@ -41,8 +49,8 @@ const { featured = false } = Astro.props;
     const loopWidth = () => track.scrollWidth / 2;
 
     const centerOnLoop = () => {
-      if (!reducedMotion.matches && loopWidth() > 0 && carousel.scrollLeft === 0) {
-        carousel.scrollLeft = loopWidth();
+      if (!reducedMotion.matches && loopWidth() > 0 && scrollPort.scrollLeft === 0) {
+        scrollPort.scrollLeft = loopWidth();
       }
     };
 
@@ -53,8 +61,8 @@ const { featured = false } = Astro.props;
       if (reducedMotion.matches) return;
       const width = loopWidth();
       if (!width) return;
-      if (carousel.scrollLeft < width * 0.5) carousel.scrollLeft += width;
-      if (carousel.scrollLeft > width * 1.5) carousel.scrollLeft -= width;
+      if (scrollPort.scrollLeft < width * 0.5) scrollPort.scrollLeft += width;
+      if (scrollPort.scrollLeft > width * 1.5) scrollPort.scrollLeft -= width;
     };
 
     const animate = (time: number) => {
@@ -62,7 +70,7 @@ const { featured = false } = Astro.props;
       lastTime = time;
       const focused = carousel.contains(document.activeElement);
       if (!reducedMotion.matches && !dragging && !hovering && !focused) {
-        carousel.scrollLeft += autoSpeed * elapsed;
+        scrollPort.scrollLeft += autoSpeed * elapsed;
         keepInLoop();
       }
       requestAnimationFrame(animate);
@@ -72,20 +80,20 @@ const { featured = false } = Astro.props;
     carousel.addEventListener('mouseenter', () => { hovering = true; });
     carousel.addEventListener('mouseleave', () => { hovering = false; });
 
-    carousel.addEventListener('pointerdown', (event) => {
+    scrollPort.addEventListener('pointerdown', (event) => {
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
       dragging = true;
       dragged = false;
       pointerStart = event.clientX;
       previousPointer = event.clientX;
-      carousel.setPointerCapture(event.pointerId);
+      scrollPort.setPointerCapture(event.pointerId);
       carousel.classList.add('is-dragging');
     });
 
-    carousel.addEventListener('pointermove', (event) => {
+    scrollPort.addEventListener('pointermove', (event) => {
       if (!dragging) return;
       if (Math.abs(event.clientX - pointerStart) > 5) dragged = true;
-      carousel.scrollLeft -= event.clientX - previousPointer;
+      scrollPort.scrollLeft -= event.clientX - previousPointer;
       previousPointer = event.clientX;
       keepInLoop();
       if (dragged) event.preventDefault();
@@ -95,12 +103,12 @@ const { featured = false } = Astro.props;
       if (!dragging) return;
       dragging = false;
       carousel.classList.remove('is-dragging');
-      if (carousel.hasPointerCapture(event.pointerId)) carousel.releasePointerCapture(event.pointerId);
+      if (scrollPort.hasPointerCapture(event.pointerId)) scrollPort.releasePointerCapture(event.pointerId);
     };
-    carousel.addEventListener('pointerup', stopDragging);
-    carousel.addEventListener('pointercancel', stopDragging);
+    scrollPort.addEventListener('pointerup', stopDragging);
+    scrollPort.addEventListener('pointercancel', stopDragging);
 
-    carousel.addEventListener('click', (event) => {
+    scrollPort.addEventListener('click', (event) => {
       if (dragged) {
         event.preventDefault();
         event.stopPropagation();
@@ -108,6 +116,15 @@ const { featured = false } = Astro.props;
       }
     }, true);
 
-    carousel.addEventListener('scroll', keepInLoop, { passive: true });
+    scrollPort.addEventListener('scroll', keepInLoop, { passive: true });
+
+    carousel.querySelectorAll<HTMLButtonElement>('.app-carousel-arrow').forEach((button) => {
+      button.addEventListener('click', () => {
+        const card = track.querySelector<HTMLElement>('.app-card');
+        const step = (card?.offsetWidth || 280) + 16;
+        const direction = button.classList.contains('app-carousel-arrow-left') ? -1 : 1;
+        scrollPort.scrollBy({ left: step * direction, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      });
+    });
   });
 </script>
