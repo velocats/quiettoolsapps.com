@@ -92,7 +92,7 @@ export const apps: QuietToolApp[] = [
     status: 'available',
     shortTagline: 'Keep maintenance records in one place.',
     description:
-      'FixLog helps homeowners and small businesses track assets, repairs, maintenance, reminders, warranties, documents, costs, QR labels, and reports.',
+      'FixLog helps small businesses track assets, repairs, maintenance, reminders, warranties, documents, costs, QR labels, and reports.',
     features: [
       'Assets and spaces',
       'Reminders',
