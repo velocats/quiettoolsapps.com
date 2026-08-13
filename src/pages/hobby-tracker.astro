@@ -1,0 +1,105 @@
+---
+import Layout from '../components/Layout.astro';
+import Button from '../components/Button.astro';
+
+const base = import.meta.env.BASE_URL;
+const placeholder = `${base}assets/quiet-tools-logo.png`;
+const chapters = [
+  {
+    label: 'Today',
+    heading: 'Record the moment while it’s fresh.',
+    copy: 'Start a timer when you begin, or record an activity afterward in just a few taps. A date and hobby are enough; duration, quantities, notes, context, and highlights are available when they matter.',
+    alt: 'Placeholder for the Hobby Tracker Today screen with controls for starting a timed activity and recording an activity manually.',
+    points: ['Start, pause, resume, and finish an activity timer', 'Record activities manually or backdate past activities', 'Keep duration optional', 'Add quantities, distance, notes, context, or a favorite moment', 'Reuse recent hobby and duration choices', 'Edit or remove previous entries'],
+  },
+  {
+    label: 'Month',
+    heading: 'See the shape of your month.',
+    copy: 'The monthly activity mosaic turns individual sessions into a warm visual record. Explore a day, filter by hobby, and add an optional intention or reflection. Sparse months and busy months both belong.',
+    alt: 'Placeholder for a monthly hobby activity mosaic with colored days and a summary of recorded activity.',
+    points: ['Calendar-aware month navigation', 'Colorful activity mosaic with day-by-day details', 'Per-hobby activity summaries', 'Measurements kept in their proper units', 'Optional monthly intention and reflection', 'No warnings or penalties for quiet days'],
+  },
+  {
+    label: 'Hobbies',
+    heading: 'Make every hobby your own.',
+    copy: 'Choose from more than 500 hobby ideas or create something completely custom. Personalize how each hobby looks and decide what—if anything—you want to track.',
+    alt: 'Placeholder for the Hobby Tracker hobby library showing personalized hobbies with colors, symbols, and recent activity.',
+    points: ['More than 500 included hobby ideas', 'Completely custom hobbies with colors, symbols, emoji, or photos', 'Flexible tracking for time, sessions, quantities, distance, and progress', 'Items for projects, books, equipment, supplies, and works in progress', 'Archive and restore hobbies without losing history', 'Your Hobby Mix for seeing how hobbies shared a selected period'],
+  },
+  {
+    label: 'Recaps',
+    heading: 'Turn activity into something worth keeping.',
+    copy: 'Create weekly, monthly, or yearly visual recaps from the activities you recorded. The Hobby Wheel shows when your hobbies appeared, while privacy controls let you decide exactly what belongs in anything you save or share.',
+    alt: 'Placeholder for a monthly Hobby Wheel recap showing activity distributed around the days of the month.',
+    points: ['Weekly, monthly, and yearly Hobby Wheel recaps', 'All-hobbies or single-hobby views', 'Save, share, or copy a factual description', 'Choose exactly which personal photos and details appear', 'Print-quality PDF recap books in three layouts and multiple sizes', 'On-device generation without AI-written content'],
+  },
+];
+const yes = ['Monthly reflection', 'Optional depth', 'A personal record', 'Encouragement without pressure', 'Space for quiet and active periods'];
+const no = ['Mandatory streaks', 'Missed-day warnings', 'Hobby rankings', 'Productivity scores', 'Competition or social pressure'];
+const privacy = ['No account or login', 'No ads, subscriptions, or in-app purchases', 'No analytics or behavioral tracking', 'No external advertising SDKs', 'Local-first storage that works offline', 'Personal photos stay out of shared recaps unless selected', 'Demo data stays separate from personal data'];
+const schema = {
+  '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Hobby Tracker',
+  description: 'A private, pressure-free place to remember the hobbies you enjoy.',
+  applicationCategory: 'LifestyleApplication', operatingSystem: 'iOS, iPadOS, macOS',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  url: 'https://quiettoolsapps.com/hobby-tracker',
+  author: { '@type': 'Organization', name: 'Quiet Tools', url: 'https://quiettoolsapps.com' },
+};
+---
+<Layout title="Hobby Tracker — A Private, Pressure-Free Hobby Journal | Quiet Tools" description="Record hobby activities, projects, photos, and memorable moments without streaks or pressure. Hobby Tracker is free, private, and made for iPhone, iPad, and Mac." canonicalPath="/hobby-tracker/">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <section class="ht-hero">
+    <div class="ht-wrap hero-grid">
+      <div class="hero-copy">
+        <p class="section-eyebrow">Free forever</p>
+        <img class="product-lockup" src={placeholder} width="360" height="180" alt="Quiet Tools logo placeholder for the Hobby Tracker logo" />
+        <h1>Look at everything you made time for.</h1>
+        <p class="lead">Hobby Tracker helps you record activities, follow projects, and remember the moments behind the hobbies you love—without streaks, pressure, or another account to manage.</p>
+        <div class="hero-actions"><span class="button button-primary coming" aria-label="Hobby Tracker download coming soon">Coming soon</span><Button href="#features" variant="secondary">Explore the features</Button></div>
+        <p class="platform-note">For iPhone, iPad, and Mac</p>
+      </div>
+      <figure class="screen hero-screen"><img src={placeholder} width="1200" height="800" alt="Quiet Tools logo placeholder for the Hobby Tracker Today screen" /><figcaption>Today screenshot coming soon</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="ht-wrap intro" aria-labelledby="enjoyment-title">
+    <div><p class="section-eyebrow">A gentler record</p><h2 id="enjoyment-title">Enjoyment isn’t a streak.</h2><p class="section-copy">Hobbies naturally come and go. Hobby Tracker helps you notice what you did, not judge what you didn’t. Quiet days are normal, every field is optional, and nothing turns your free time into another obligation.</p></div>
+    <div class="comparison">
+      <article><h3>What it provides</h3><ul>{yes.map((item) => <li><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
+      <article class="not-list"><h3>What it leaves out</h3><ul>{no.map((item) => <li><span aria-hidden="true">—</span>{item}</li>)}</ul></article>
+    </div>
+  </section>
+
+  <div id="features" class="feature-story">
+    {chapters.map((chapter, i) => <section class:list={['ht-wrap', 'chapter', i % 2 && 'reverse']}>
+      <figure class="screen"><img src={placeholder} width="1200" height="800" loading="lazy" decoding="async" alt={chapter.alt} /><figcaption>{chapter.label} screenshot coming soon</figcaption></figure>
+      <div><p class="section-eyebrow">{chapter.label}</p><h2>{chapter.heading}</h2><p class="section-copy">{chapter.copy}</p><ul class="feature-list">{chapter.points.map((point) => <li>{point}</li>)}</ul></div>
+    </section>)}
+  </div>
+
+  <section class="appearance">
+    <div class="ht-wrap chapter reverse">
+      <figure class="screen"><img src={placeholder} width="1200" height="800" loading="lazy" decoding="async" alt="Quiet Tools logo placeholder for the Hobby Tracker appearance gallery" /><figcaption>Appearance screenshot coming soon</figcaption></figure>
+      <div><p class="section-eyebrow">Appearance</p><h2>Make it feel like yours.</h2><p class="section-copy">Choose from 30 included appearance themes spanning warm paper, soft and bright, camo, coastal, forest, midnight, celestial, minimal, and other styles. Every theme is free, bundled with the app, and available offline.</p></div>
+    </div>
+  </section>
+
+  <section class="privacy-band">
+    <div class="ht-wrap privacy-grid"><div><p class="section-eyebrow">Privacy, by design</p><h2>Your hobbies are your business.</h2><p>Hobby Tracker does not need to know who you are to help you remember what you love doing.</p></div><ul>{privacy.map((item) => <li>{item}</li>)}</ul></div>
+  </section>
+
+  <section class="ht-wrap platforms"><div class="section-heading-inline"><p class="section-eyebrow">Platforms</p><h2>Native wherever you make time.</h2></div><div class="platform-grid"><article><h3>iPhone</h3><p>Quickly start a timer, record an activity, or revisit a recent moment.</p></article><article><h3>iPad</h3><p>Explore spacious month views, hobby collections, and visual recaps.</p></article><article><h3>Mac</h3><p>Use a genuine sidebar-based desktop experience with native keyboard and file behavior.</p></article></div><p class="access-note">Designed for Dynamic Type, VoiceOver, increased contrast, reduced motion, keyboard navigation, and layouts that adapt across iPhone, iPad, and Mac.</p></section>
+
+  <section class="free-band"><div class="ht-wrap"><p class="section-eyebrow">The whole experience</p><h2>Free means the whole app.</h2><p>No subscription. No advertising. No paid themes. No features waiting behind a Pro tier. Hobby Tracker is designed to remain useful without accounts, paid services, or recurring online costs.</p></div></section>
+
+  <section class="ht-wrap support"><div><p class="section-eyebrow">Support & feedback</p><h2>Questions, feedback, or a problem?</h2><p>Hobby Tracker is built with care, and thoughtful feedback is always welcome.</p><p class="support-hint">For technical questions, it helps to include your device, operating-system version, Hobby Tracker version, and a short description of what happened. Please don’t send private notes, photos, full exports, passwords, Apple ID credentials, or other sensitive information.</p></div><div class="support-actions"><Button href="mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Support">Contact support</Button><Button href="mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Feedback" variant="secondary">Send feedback</Button></div></section>
+
+  <section class="closing"><div class="ht-wrap"><img src={placeholder} width="160" height="80" alt="Quiet Tools logo placeholder for the Hobby Tracker symbol" /><h2>Keep a record of what you enjoy.</h2><p>Start with one hobby, record only what matters, and let the month tell its own story.</p><div class="hero-actions"><span class="button button-primary coming" aria-label="Hobby Tracker download coming soon">Coming soon</span><Button href={`${base}apps/`} variant="secondary">Discover more Quiet Tools</Button></div><p class="platform-note">Free forever · For iPhone, iPad, and Mac</p></div></section>
+</Layout>
+
+<style>
+  .ht-wrap{width:min(1180px,calc(100% - 2rem));margin-inline:auto}.ht-hero{overflow:hidden;background:radial-gradient(circle at 82% 24%,rgba(137,205,199,.45),transparent 24rem),linear-gradient(120deg,#fbf5ea,#fffdf8 55%,#e9f2f3);border-bottom:1px solid var(--soft-border)}.hero-grid{min-height:720px;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,6vw,6rem);align-items:center;padding-block:clamp(4rem,8vw,7rem)}.product-lockup{width:150px;height:75px;object-fit:contain;margin:0 0 1.5rem}.lead,.section-copy{margin-top:1.25rem;color:#244968;font-size:clamp(1.04rem,1.5vw,1.18rem);max-width:44rem}.hero-actions{margin-top:1.75rem}.platform-note{color:#174866;font-weight:800}.coming{cursor:default;opacity:.82}.screen{margin:0;padding:clamp(1rem,2.5vw,1.7rem);background:linear-gradient(145deg,#f1c4ad,#f6e5ca 35%,#b7d9d5 70%,#a9b6df);border:1px solid rgba(8,43,79,.12);border-radius:32px;box-shadow:0 26px 70px rgba(8,43,79,.14)}.screen img{width:100%;aspect-ratio:3/2;object-fit:contain;background:rgba(255,255,255,.8);border-radius:20px}.screen figcaption{text-align:center;margin-top:.8rem;color:#174866;font-size:.82rem;font-weight:800}.intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,6vw,6rem);padding-block:clamp(4rem,8vw,7rem)}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.comparison article,.platform-grid article{padding:1.5rem;border-radius:24px;background:white;border:1px solid var(--soft-border);box-shadow:0 15px 40px rgba(8,43,79,.06)}.comparison ul,.privacy-grid ul{list-style:none;padding:0;margin:1rem 0 0}.comparison li{display:flex;gap:.65rem;padding:.45rem 0;color:#244968}.comparison li span{color:#147185;font-weight:900}.not-list li span{color:#b5450f}.feature-story{background:rgba(247,232,210,.22)}.chapter{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,7vw,7rem);align-items:center;padding-block:clamp(4rem,8vw,7rem)}.chapter.reverse .screen{order:2}.feature-list{columns:2;column-gap:2rem;margin:1.6rem 0 0;padding-left:1.15rem;color:#244968}.feature-list li{break-inside:avoid;margin-bottom:.65rem}.appearance{background:linear-gradient(180deg,#f8f3ea,#eef6f4)}.privacy-band{background:var(--deep-navy);color:#edf8f7}.privacy-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,7vw,7rem);padding-block:clamp(4rem,7vw,6rem)}.privacy-band h2{color:white}.privacy-band p{margin-top:1rem;color:#d6e9e8;font-size:1.1rem}.privacy-grid ul{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}.privacy-grid li{padding:1rem 1rem 1rem 2.8rem;position:relative;border-radius:16px;background:rgba(255,255,255,.08)}.privacy-grid li:before{content:'✓';position:absolute;left:1rem;color:#8ed6ce;font-weight:900}.platforms{padding-block:clamp(4rem,8vw,7rem)}.section-heading-inline{text-align:center}.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.4rem}.platform-grid p{margin-top:.6rem;color:#244968}.access-note{max-width:850px;margin:2rem auto 0;padding:1.1rem 1.3rem;text-align:center;border-radius:16px;background:rgba(184,214,211,.3);color:#174866;font-weight:700}.free-band{background:#f6dfc9;border-block:1px solid #ebc6a4}.free-band .ht-wrap{padding-block:clamp(3rem,6vw,5rem);text-align:center}.free-band p:not(.section-eyebrow){max-width:770px;margin:1rem auto 0;font-size:1.12rem;color:#244968}.support{display:grid;grid-template-columns:1.25fr .75fr;gap:3rem;align-items:center;padding-block:clamp(4rem,8vw,7rem)}.support>div>p:not(.section-eyebrow){margin-top:1rem;color:#244968}.support-hint{font-size:.92rem}.support-actions{display:flex;flex-direction:column;gap:.8rem}.closing{text-align:center;background:linear-gradient(135deg,#eef6f4,#fbf1e4);border-top:1px solid var(--soft-border)}.closing .ht-wrap{padding-block:clamp(4rem,8vw,7rem)}.closing img{width:100px;height:50px;object-fit:contain;margin:0 auto 1.5rem}.closing p{margin:1rem auto 0;max-width:650px;color:#244968}.closing .hero-actions{justify-content:center}
+  @media(max-width:820px){.hero-grid,.intro,.chapter,.privacy-grid,.support{grid-template-columns:1fr}.hero-grid{min-height:auto}.hero-screen{max-width:620px}.chapter.reverse .screen{order:0}.comparison,.privacy-grid ul{grid-template-columns:1fr}.platform-grid{grid-template-columns:1fr}.feature-list{columns:1}.support-actions{align-items:stretch}}
+  @media(max-width:520px){.ht-wrap{width:min(100% - 1.25rem,1180px)}.hero-grid{padding-block:3.5rem}.screen{border-radius:22px;padding:.75rem}.screen img{border-radius:14px}.comparison{grid-template-columns:1fr}.chapter{padding-block:3.5rem}.hero-actions :global(.button),.hero-actions .button{width:100%}.privacy-grid ul{grid-template-columns:1fr}}
+</style>

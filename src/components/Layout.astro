@@ -6,16 +6,20 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  canonicalPath?: string;
+  image?: string;
 }
 
 const {
   title = 'Quiet Tools — Simple Apps for Useful Things',
   description = 'Quiet Tools builds calm, practical apps for meals, road trip games, maintenance records, homestead planning, and more.',
+  canonicalPath,
+  image = 'assets/quiet-tools-logo.png',
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
-const canonicalUrl = new URL(base, Astro.site).toString();
-const ogImageUrl = new URL(`${base}assets/quiet-tools-logo.png`, Astro.site).toString();
+const canonicalUrl = new URL(canonicalPath || Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(`${base}${image}`, Astro.site).toString();
 ---
 <!doctype html>
 <html lang="en">
@@ -29,6 +33,12 @@ const ogImageUrl = new URL(`${base}assets/quiet-tools-logo.png`, Astro.site).toS
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="Quiet Tools logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href={`${base}assets/favicon.png`} />
   </head>
   <body>

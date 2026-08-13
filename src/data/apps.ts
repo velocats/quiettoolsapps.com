@@ -19,6 +19,20 @@ export type QuietToolApp = {
 
 export const apps: QuietToolApp[] = [
   {
+    name: 'Hobby Tracker',
+    slug: 'hobby-tracker',
+    status: 'coming-soon',
+    shortTagline: 'Look at everything you made time for.',
+    description:
+      'A private, pressure-free place to remember the activities, projects, progress, and moments behind the hobbies you enjoy.',
+    features: ['Monthly reflection', 'Flexible activity records', 'Visual recaps', 'Private and offline'],
+    category: 'Hobbies & reflection',
+    websiteUrl: '/hobby-tracker/',
+    supportUrl: 'mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Support',
+    image: 'assets/quiet-tools-logo.png',
+    accent: '#e87b62',
+  },
+  {
     name: 'Around The House',
     slug: 'around-the-house',
     status: 'coming-soon',
