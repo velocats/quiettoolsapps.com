@@ -35,7 +35,7 @@ export const apps: QuietToolApp[] = [
   {
     name: 'Around The House',
     slug: 'around-the-house',
-    status: 'coming-soon',
+    status: 'available',
     shortTagline: 'Give your home a memory.',
     description:
       'Around The House keeps repairs, reminders, warranties, receipts, photos, notes, service history, costs, and important home details organized in one private app.',

@@ -82,6 +82,9 @@ const { featured = false } = Astro.props;
 
     scrollPort.addEventListener('pointerdown', (event) => {
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      // Keep ordinary clicks on links and controls from being captured by the
+      // carousel's mouse-drag gesture.
+      if ((event.target as Element).closest('a, button')) return;
       dragging = true;
       dragged = false;
       pointerStart = event.clientX;
