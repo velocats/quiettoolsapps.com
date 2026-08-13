@@ -9,7 +9,7 @@ const fallbackSrc = app.fallbackImage ? `${base}${app.fallbackImage}` : '';
 const titleId = `${idPrefix}-${app.slug}-title`;
 ---
 <article class:list={['app-card', featured && 'app-card-featured']} style={`--accent:${app.accent || '#6FAFC0'}`} aria-labelledby={titleId}>
-  <div class="app-art">
+  <div class:list={['app-art', `app-art-${app.slug}`]}>
     {app.image ? (
       <img
         src={imageSrc}
