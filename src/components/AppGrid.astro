@@ -4,11 +4,12 @@ import { apps } from '../data/apps';
 interface Props { featured?: boolean; }
 const { featured = false } = Astro.props;
 ---
-<div
-  class:list={['app-carousel', featured && 'app-carousel-featured']}
-  role="region"
-  aria-label="Quiet Tools apps — swipe or drag in either direction"
->
+{!featured ? (
+  <div class="app-directory-grid" role="list" aria-label="All Quiet Tools apps">
+    {apps.map((app) => <div role="listitem"><AppCard app={app} /></div>)}
+  </div>
+) : (
+<div class="app-carousel app-carousel-featured" role="region" aria-label="Featured Quiet Tools apps — swipe or drag in either direction">
   <button class="app-carousel-arrow app-carousel-arrow-left" type="button" aria-label="Show previous app">
     <span aria-hidden="true">‹</span>
   </button>
@@ -26,6 +27,7 @@ const { featured = false } = Astro.props;
     <span aria-hidden="true">›</span>
   </button>
 </div>
+)}
 
 <script>
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
