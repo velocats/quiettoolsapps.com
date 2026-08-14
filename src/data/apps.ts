@@ -29,6 +29,7 @@ export const apps: QuietToolApp[] = [
     category: 'Hobbies & reflection',
     websiteUrl: '/hobby-tracker/',
     supportUrl: 'mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Support',
+    privacyUrl: '/hobby-tracker/privacy/',
     image: 'assets/hobby-tracker/hobby-tracker-app-icon.png',
     accent: '#e87b62',
   },
