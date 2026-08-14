@@ -30,7 +30,6 @@ const base = import.meta.env.BASE_URL;
         <input type="hidden" name="_autoresponse" value="We received your Hobby Tracker support request. Thanks for reaching out — we’ll review it and reply as soon as we can." />
         <input type="hidden" name="_url" value="https://quiettoolsapps.com/hobby-tracker/support/" />
         <input type="hidden" name="_next" value="https://quiettoolsapps.com/hobby-tracker/support/?submitted=true" />
-        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <div class="field-row">
           <label>
@@ -70,6 +69,7 @@ const base = import.meta.env.BASE_URL;
           <textarea name="message" rows="7" placeholder="Tell us what you were trying to do, what happened, and any steps that might help us reproduce it." required></textarea>
         </label>
 
+        <p class="submission-note"><strong>After selecting Send, FormSubmit will ask you to complete a brief spam check.</strong> Your request is sent only after that check is completed.</p>
         <p class="privacy-note">Please don’t include private notes, photos, full exports, passwords, Apple ID credentials, or other sensitive information. Form submissions are processed by FormSubmit and delivered to Quiet Tools by email. See the <a href={`${base}hobby-tracker/privacy/`}>Hobby Tracker privacy policy</a>.</p>
         <button class="button button-primary" type="submit">Send support request</button>
       </form>
@@ -115,8 +115,8 @@ const base = import.meta.env.BASE_URL;
   textarea { resize: vertical; min-height: 10rem; }
   input:focus, select:focus, textarea:focus { outline: 3px solid rgba(20,113,133,.2); border-color: #147185; }
   .button { justify-self: start; border: 0; cursor: pointer; }
+  .submission-note { padding: .9rem 1rem; border-radius: 12px; background: #eef6f4; color: #174866; font-size: .92rem; }
   .privacy-note { color: #587087; font-size: .88rem; }
-  .honey { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
   .support-aside { display: grid; gap: 1rem; }
   .submitted-message { padding: 1.5rem; border-radius: 16px; background: #e2f2ee; color: #174866; }
   .submitted-message p { margin-top: .5rem; }
