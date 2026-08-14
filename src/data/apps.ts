@@ -28,7 +28,7 @@ export const apps: QuietToolApp[] = [
     features: ['Monthly reflection', 'Flexible activity records', 'Visual recaps', 'Private and offline'],
     category: 'Hobbies & reflection',
     websiteUrl: '/hobby-tracker/',
-    supportUrl: 'mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Support',
+    supportUrl: '/hobby-tracker/support/',
     privacyUrl: '/hobby-tracker/privacy/',
     image: 'assets/hobby-tracker/hobby-tracker-app-icon.png',
     accent: '#e87b62',

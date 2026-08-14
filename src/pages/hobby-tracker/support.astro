@@ -1,0 +1,122 @@
+---
+import Layout from '../../components/Layout.astro';
+import CalmBackground from '../../components/CalmBackground.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+<Layout
+  title="Hobby Tracker Support — Quiet Tools"
+  description="Get help with Hobby Tracker for iPhone, iPad, and Mac."
+  canonicalPath="/hobby-tracker/support/"
+  image="assets/hobby-tracker/hobby-tracker-app-icon.png"
+>
+  <CalmBackground />
+  <section class="page-hero">
+    <p class="section-eyebrow">Hobby Tracker</p>
+    <h1>How can we help?</h1>
+    <p>Send a support request with a few details about your device and what happened. We’ll reply by email.</p>
+  </section>
+
+  <section class="support-layout">
+    <div class="form-card">
+      <div id="submitted-message" class="submitted-message" role="status" hidden>
+        <h2>Thanks — your message was sent.</h2>
+        <p>We’ll review your request and reply to the email address you provided.</p>
+      </div>
+
+      <form action="https://formsubmit.co/support@quiettoolsapps.com" method="POST">
+        <input type="hidden" name="_subject" value="New Hobby Tracker support request" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://www.quiettoolsapps.com/hobby-tracker/support/?submitted=true" />
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="field-row">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+        </div>
+
+        <div class="field-row">
+          <label>
+            Device
+            <select name="device" required>
+              <option value="">Choose a device</option>
+              <option>iPhone</option>
+              <option>iPad</option>
+              <option>Mac</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>
+            Operating-system version
+            <input type="text" name="operating_system_version" placeholder="For example, iOS 26.0" required />
+          </label>
+        </div>
+
+        <label>
+          Hobby Tracker version <span>(optional)</span>
+          <input type="text" name="app_version" placeholder="Found in the app’s settings" />
+        </label>
+
+        <label>
+          What can we help with?
+          <textarea name="message" rows="7" placeholder="Tell us what you were trying to do, what happened, and any steps that might help us reproduce it." required></textarea>
+        </label>
+
+        <p class="privacy-note">Please don’t include private notes, photos, full exports, passwords, Apple ID credentials, or other sensitive information. Form submissions are processed by FormSubmit and delivered to Quiet Tools by email. See the <a href={`${base}hobby-tracker/privacy/`}>Hobby Tracker privacy policy</a>.</p>
+        <button class="button button-primary" type="submit">Send support request</button>
+      </form>
+    </div>
+
+    <aside class="support-aside">
+      <article class="info-card">
+        <h2>Helpful details</h2>
+        <ul>
+          <li>What you were trying to do</li>
+          <li>What happened instead</li>
+          <li>Whether it happens every time</li>
+          <li>Your device and software versions</li>
+        </ul>
+      </article>
+      <article class="info-card">
+        <h2>Prefer email?</h2>
+        <p>Write to <a href="mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Support">support@quiettoolsapps.com</a>.</p>
+      </article>
+    </aside>
+  </section>
+</Layout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const message = document.querySelector('#submitted-message');
+  const form = document.querySelector('form');
+  if (params.get('submitted') === 'true' && message instanceof HTMLElement && form instanceof HTMLFormElement) {
+    message.hidden = false;
+    form.hidden = true;
+    message.focus();
+  }
+</script>
+
+<style>
+  .support-layout { width: min(1100px, calc(100% - 2rem)); margin: 0 auto clamp(4rem, 8vw, 7rem); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .7fr); gap: 1.25rem; align-items: start; }
+  .form-card { padding: clamp(1.4rem, 4vw, 2.5rem); border: 1px solid var(--soft-border); border-radius: var(--radius); background: rgba(255,255,255,.84); box-shadow: 0 18px 46px rgba(8,43,79,.075); }
+  form { display: grid; gap: 1.25rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  label { display: grid; gap: .45rem; color: var(--deep-navy); font-weight: 800; }
+  label span { color: #587087; font-size: .88rem; font-weight: 600; }
+  input, select, textarea { width: 100%; border: 1px solid #b8c7d2; border-radius: 12px; background: #fff; color: var(--deep-navy); font: inherit; padding: .8rem .9rem; }
+  textarea { resize: vertical; min-height: 10rem; }
+  input:focus, select:focus, textarea:focus { outline: 3px solid rgba(20,113,133,.2); border-color: #147185; }
+  .button { justify-self: start; border: 0; cursor: pointer; }
+  .privacy-note { color: #587087; font-size: .88rem; }
+  .honey { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+  .support-aside { display: grid; gap: 1rem; }
+  .submitted-message { padding: 1.5rem; border-radius: 16px; background: #e2f2ee; color: #174866; }
+  .submitted-message p { margin-top: .5rem; }
+  @media (max-width: 760px) { .support-layout, .field-row { grid-template-columns: 1fr; } }
+</style>
