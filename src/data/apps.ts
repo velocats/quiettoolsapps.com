@@ -21,13 +21,14 @@ export const apps: QuietToolApp[] = [
   {
     name: 'Hobby Tracker',
     slug: 'hobby-tracker',
-    status: 'coming-soon',
+    status: 'available',
     shortTagline: 'Look at everything you made time for.',
     description:
       'A private, pressure-free place to remember the activities, projects, progress, and moments behind the hobbies you enjoy.',
     features: ['Monthly reflection', 'Flexible activity records', 'Visual recaps', 'Private and offline'],
     category: 'Hobbies & reflection',
     websiteUrl: '/hobby-tracker/',
+    appStoreUrl: 'https://apps.apple.com/us/app/hobby-tracker-hobby-log/id6797727531',
     supportUrl: '/hobby-tracker/support/',
     privacyUrl: '/hobby-tracker/privacy/',
     image: 'assets/hobby-tracker/hobby-tracker-app-icon.png',

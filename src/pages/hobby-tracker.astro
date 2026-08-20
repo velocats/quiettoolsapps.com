@@ -4,6 +4,7 @@ import Button from '../components/Button.astro';
 
 const base = import.meta.env.BASE_URL;
 const asset = (name: string) => `${base}assets/hobby-tracker/${name}`;
+const appStoreUrl = 'https://apps.apple.com/us/app/hobby-tracker-hobby-log/id6797727531';
 const chapters = [
   {
     label: 'Today', image: 'today.png',
@@ -41,7 +42,8 @@ const schema = {
   '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Hobby Tracker',
   description: 'A private, pressure-free place to remember the hobbies you enjoy.',
   applicationCategory: 'LifestyleApplication', operatingSystem: 'iOS, iPadOS, macOS',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', url: appStoreUrl },
+  downloadUrl: appStoreUrl,
   url: 'https://quiettoolsapps.com/hobby-tracker',
   author: { '@type': 'Organization', name: 'Quiet Tools', url: 'https://quiettoolsapps.com' },
 };
@@ -56,7 +58,7 @@ const schema = {
         <img class="product-lockup" src={asset('hobby-tracker-lockup.png')} width="880" height="245" alt="Hobby Tracker" />
         <h1>Look at everything you made time for.</h1>
         <p class="lead">Hobby Tracker helps you record activities, follow projects, and remember the moments behind the hobbies you love—without streaks, pressure, or another account to manage.</p>
-        <div class="hero-actions"><span class="button button-primary coming" aria-label="Hobby Tracker download coming soon">Coming soon</span><Button href="#features" variant="secondary">Explore the features</Button><Button href={`${base}hobby-tracker/support/`} variant="secondary">Need Hobby Tracker Support?</Button></div>
+        <div class="hero-actions"><a class="app-store-link" href={appStoreUrl} target="_blank" rel="noopener"><img class="app-store-badge" src={`${base}assets/app-store-badge.svg`} width="170" height="57" alt="Download Hobby Tracker on the App Store" /></a><Button href="#features" variant="secondary">Explore the features</Button><Button href={`${base}hobby-tracker/support/`} variant="secondary">Need Hobby Tracker Support?</Button></div>
         <p class="platform-note">For iPhone, iPad, and Mac</p>
       </div>
       <figure class="screen hero-screen"><img src={asset('hero-hobby-mix.png')} width="1206" height="2622" alt="Hobby Tracker Hobby Mix showing hobbies as a colorful mosaic sized by time spent." /></figure>
@@ -98,7 +100,7 @@ const schema = {
 
   <section class="ht-wrap support"><div><p class="section-eyebrow">Support & feedback</p><h2>Questions, feedback, or a problem?</h2><p>Hobby Tracker is built with care, and thoughtful feedback is always welcome.</p><p class="support-hint">For technical questions, it helps to include your device, operating-system version, Hobby Tracker version, and a short description of what happened. Please don’t send private notes, photos, full exports, passwords, Apple ID credentials, or other sensitive information.</p></div><div class="support-actions"><Button href={`${base}hobby-tracker/support/`}>Contact support</Button><Button href="mailto:support@quiettoolsapps.com?subject=Hobby%20Tracker%20Feedback" variant="secondary">Send feedback</Button></div></section>
 
-  <section class="closing"><div class="ht-wrap"><img src={asset('hobby-tracker-symbol.png')} width="650" height="550" alt="Hobby Tracker symbol" /><h2>Keep a record of what you enjoy.</h2><p>Start with one hobby, record only what matters, and let the month tell its own story.</p><div class="hero-actions"><span class="button button-primary coming" aria-label="Hobby Tracker download coming soon">Coming soon</span><Button href={`${base}apps/`} variant="secondary">Discover more Quiet Tools</Button></div><p class="platform-note">Free forever · For iPhone, iPad, and Mac</p></div></section>
+  <section class="closing"><div class="ht-wrap"><img src={asset('hobby-tracker-symbol.png')} width="650" height="550" alt="Hobby Tracker symbol" /><h2>Keep a record of what you enjoy.</h2><p>Start with one hobby, record only what matters, and let the month tell its own story.</p><div class="hero-actions"><a class="app-store-link" href={appStoreUrl} target="_blank" rel="noopener"><img class="app-store-badge" src={`${base}assets/app-store-badge.svg`} width="170" height="57" alt="Download Hobby Tracker on the App Store" /></a><Button href={`${base}apps/`} variant="secondary">Discover more Quiet Tools</Button></div><p class="platform-note">Free forever · For iPhone, iPad, and Mac</p></div></section>
 </Layout>
 
 <style>
@@ -109,4 +111,5 @@ const schema = {
   @media(max-width:820px){.chapter.reverse .screen-group{order:0}.screen-group{padding-bottom:1rem}.supporting-screen{right:0;bottom:-1rem;width:38%!important}}
   @media(max-width:520px){.supporting-screen{position:relative;width:72%!important;right:auto;bottom:auto;margin:-5rem 0 0 auto}.hero-screen{width:min(88vw,390px)}}
   .privacy-link{color:#b9eee8;font-weight:800;text-decoration-thickness:2px;text-underline-offset:3px}
+  .app-store-link{display:inline-flex;align-items:center;border-radius:9px}.app-store-link:focus-visible{outline:3px solid rgba(20,113,133,.35);outline-offset:4px}.app-store-badge{display:block;width:170px;height:auto}.closing .app-store-badge{width:170px;height:auto;margin:0}
 </style>
