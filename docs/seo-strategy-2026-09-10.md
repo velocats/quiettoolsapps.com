@@ -27,15 +27,17 @@ Validation completed:
 - Git whitespace check passed.
 - Published source commit `f527e4b` through the existing GitHub Pages workflow. [Deployment run](https://github.com/velocats/quiettoolsapps.com/actions/runs/34505710003) completed successfully.
 - Live homepage, About, and maintenance comparison pages return the new content and HTTPS non-www canonicals. The live sitemap contains the new routes without www URLs, and the self-hosted font is accessible.
-- Prepared [the FixLog content implementation brief](fixlog-content-implementation.md) after inspecting the local FixLog source and existing screenshot inventory. No FixLog source changes have been made yet.
+- Implemented the three priority pages in the FixLog repository using [the content implementation brief](fixlog-content-implementation.md): CMMS alternative, equipment repair log, and QR labels. Added real screenshots, an explicitly illustrative service record, and source-verified QR limitations.
+- Mobile Lighthouse lab runs on the published homepage and Hobby Tracker scored 100 for performance, accessibility, and SEO. Homepage LCP was 1.9 seconds with CLS 0; Hobby Tracker LCP was 1.6 seconds with CLS 0.039. These are single lab runs, not field Core Web Vitals or comprehensive accessibility certification.
+- Follow-up fixes remove a mismatched hero link label, add responsive hero images, and resize Hobby Tracker branding with corrected lockup dimensions. Production build and local link, image, H1, and canonical checks pass across all nine studio pages and the three edited FixLog pages.
 
 Remaining before calling the complete studio milestone finished:
 
-- Full accessibility, text-zoom, and reduced-motion review across every page; measured mobile performance and field Core Web Vitals have not been collected.
+- Full accessibility, text-zoom, and reduced-motion review across every page; field Core Web Vitals have not been collected. Mobile lab performance is recorded above.
 - Consider adding authentic screenshots for the remaining app cards; their real app icons are currently used as the visual identifier.
 - Publication and initial live checks are complete through GitHub Pages. No Sites migration was performed.
 - Search Console baseline, sitemap submission, and Google-selected canonical inspection require property access.
-- FixLog content upgrades and the later resource/outreach work are still pending and belong to their respective product workspaces.
+- The three FixLog content upgrades are implemented. The downloadable maintenance-log template and later resource/outreach work remain pending.
 
 ## Objective
 

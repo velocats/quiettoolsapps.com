@@ -1,6 +1,6 @@
 # FixLog content implementation brief
 
-Prepared September 10, 2026, after inspecting the local FixLog source at `/Users/ecross/Documents/personal/websites/fixlogapp`. This is the next content workstream in the Quiet Tools SEO plan. No FixLog files were changed in this pass.
+Prepared September 10, 2026, after inspecting the local FixLog source at `/Users/ecross/Documents/personal/websites/fixlogapp`. The CMMS alternative, equipment repair log, and QR pages are implemented with real screenshots, an illustrative record, contextual links, and clearer product limitations. QR behavior was checked against `QRCodeHelper.swift`, `AssetListView.swift`, and `QRScannerView.swift` in the app source: scanning opens a matching asset already on the device. The downloadable resource below remains pending.
 
 ## Existing pages and distinct roles
 

@@ -4,7 +4,7 @@ import Button from '../components/Button.astro';
 
 const base = import.meta.env.BASE_URL;
 const screenshots = new Set(['hero-hobby-mix.png', 'today.png', 'month.png', 'hobbies.png', 'hobby-mix.png', 'recaps.png', 'recap-share.png', 'appearance-primary.png', 'appearance-secondary.png']);
-const asset = (name: string) => screenshots.has(name) ? `${base}assets/optimized/${name.replace('.png', '.webp')}` : `${base}assets/hobby-tracker/${name}`;
+const asset = (name: string) => screenshots.has(name) || ['hobby-tracker-lockup.png', 'hobby-tracker-symbol.png'].includes(name) ? `${base}assets/optimized/${name.replace('.png', '.webp')}` : `${base}assets/hobby-tracker/${name}`;
 const appStoreUrl = 'https://apps.apple.com/us/app/hobby-tracker-hobby-log/id6797727531';
 const chapters = [
   {
@@ -56,7 +56,7 @@ const schema = {
     <div class="ht-wrap hero-grid">
       <div class="hero-copy">
         <p class="section-eyebrow">Free forever</p>
-        <img class="product-lockup" src={asset('hobby-tracker-lockup.png')} width="880" height="245" alt="Hobby Tracker" />
+        <img class="product-lockup" src={asset('hobby-tracker-lockup.png')} width="570" height="260" alt="Hobby Tracker" />
         <h1>A private hobby journal for iPhone, iPad, and Mac.</h1>
         <p class="lead">Hobby Tracker helps you record activities, follow projects, and remember the moments behind the hobbies you love—without streaks, pressure, or another account to manage.</p>
         <div class="hero-actions"><a class="app-store-link" href={appStoreUrl} target="_blank" rel="noopener"><img class="app-store-badge" src={`${base}assets/app-store-badge.svg`} width="170" height="57" alt="Download Hobby Tracker on the App Store" /></a><Button href="#features" variant="secondary">Explore the features</Button><Button href={`${base}hobby-tracker/support/`} variant="secondary">Need Hobby Tracker Support?</Button></div>
