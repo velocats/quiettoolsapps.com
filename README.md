@@ -53,22 +53,19 @@ The selected Quiet Tools logo assets live in:
 - `public/assets/quiet-tools-mark.png`
 - `public/assets/favicon.png`
 
-## GitHub Pages base path
+## Production domain and deployment
 
-This project is currently configured for GitHub Pages at:
+The production origin is `https://quiettoolsapps.com`, with no base path. Astro, the generated canonical URLs and sitemap, and `public/CNAME` use this host. GitHub Pages HTTPS enforcement was enabled on September 10, 2026.
 
-```text
-https://velocats.github.io/quiettoolsapps.com/
-```
+The existing `.github/workflows/deploy.yml` builds and deploys pushes to `main`. A successful local build does not publish changes. Verify the workflow and live URLs after publication.
 
-The `astro.config.mjs` file includes:
+## Redesign and SEO plan
 
-```js
-site: 'https://velocats.github.io',
-base: '/quiettoolsapps.com',
-```
+See [the project plan](docs/seo-strategy-2026-09-10.md) for the reference-based visual direction, implementation log, SEO backlog, and remaining verification work.
 
-That makes built asset URLs include `/quiettoolsapps.com/`, which is required for images and icons to load correctly on a GitHub Pages project site. When moving to the final custom domain `quiettoolsapps.com`, change the config to the custom domain and remove the base path.
+Shared design tokens live in `src/styles/global.css`. The homepage uses a static six-app grid. About and maintenance-app comparison pages support product discovery. DM Sans is self-hosted in `public/assets/fonts/` with 400, 500, and 600 weights; the system sans-serif stack remains the fallback.
+
+Optimized WebP assets in `public/assets/optimized/` are used for the studio mark, app icons, and Hobby Tracker screenshots. Keep original assets when regenerating derivatives.
 
 ## Real app icons
 
@@ -90,7 +87,7 @@ To download the live website icons for the Quiet Tools apps, run:
 python3 scripts/download-app-icons.py
 ```
 
-Homestead Keeper Planner is coming soon, so add its final icon manually as:
+The original Homestead Keeper Planner icon is stored as:
 
 ```text
 public/assets/app-icons/homesteadkeeper.png

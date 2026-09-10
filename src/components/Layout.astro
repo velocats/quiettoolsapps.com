@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {
-  title = 'Quiet Tools — Simple Apps for Useful Things',
+  title = 'Quiet Tools — Practical Apps for Hobbies, Home & Everyday Life',
   description = 'Quiet Tools builds calm, practical apps for meals, road trip games, maintenance records, homestead planning, and more.',
   canonicalPath,
   image = 'assets/quiet-tools-logo.png',
@@ -26,6 +26,8 @@ const ogImageUrl = new URL(`${base}${image}`, Astro.site).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href={`${base}assets/fonts/dm-sans-400.ttf`} as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/dm-sans-600.ttf`} as="font" type="font/ttf" crossorigin />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
@@ -38,6 +40,13 @@ const ogImageUrl = new URL(`${base}${image}`, Astro.site).toString();
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Organization',
+      '@id': new URL('/#organization', Astro.site).toString(),
+      name: 'Quiet Tools', url: Astro.site?.toString(),
+      logo: new URL('/assets/quiet-tools-logo.png', Astro.site).toString(),
+      email: 'support@quiettoolsapps.com',
+    })} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href={`${base}assets/favicon.png`} />
   </head>

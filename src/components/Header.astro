@@ -1,58 +1,14 @@
 ---
-import { apps } from '../data/apps';
 const base = import.meta.env.BASE_URL;
-const links = [
-  { href: `${base}apps/`, label: 'Apps' },
-  { href: `${base}support/`, label: 'Support' },
-  { href: `${base}privacy/`, label: 'Privacy' },
-];
-const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
-const appHref = (url?: string) => url?.startsWith('/') ? `${base}${url.slice(1)}` : url;
+const links = [{href: `${base}apps/`, label: 'Apps'}, {href: `${base}about/`, label: 'About'}, {href: `${base}support/`, label: 'Support'}];
+const current = Astro.url.pathname;
 ---
 <header class="site-header">
-  <a class="brand" href={base} aria-label="Quiet Tools home">
-    <img src={`${base}assets/quiet-tools-mark.png`} alt="" class="brand-mark" />
-    <span>Quiet Tools</span>
-  </a>
-  <details class="mobile-menu">
-    <summary aria-label="Open main navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </summary>
-    <nav class="mobile-nav" aria-label="Main navigation">
-      {links.map((link) => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}
-      <div class="mobile-app-links">
-        <a class="nav-button" href={`${base}apps/`}>View our apps</a>
-        <p>Go directly to an app</p>
-        {apps.map((app) => app.websiteUrl && <a href={appHref(app.websiteUrl)}>{app.name}</a>)}
-      </div>
-    </nav>
-  </details>
-  <nav class="site-nav" aria-label="Main navigation">
-    {links.map((link) => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}
-    <details class="apps-dropdown">
-      <summary aria-label="Open app links"><span class="nav-button-label">View our apps</span><span class="dropdown-toggle" aria-hidden="true">⌄</span></summary>
-      <div class="apps-dropdown-menu">
-        <a class="all-apps-link" href={`${base}apps/`}>View all apps <span aria-hidden="true">→</span></a>
-        {apps.map((app) => app.websiteUrl && <a href={appHref(app.websiteUrl)}><span>{app.name}</span><small>{app.status === 'available' ? 'Available' : 'Coming soon'}</small></a>)}
-      </div>
-    </details>
-  </nav>
+  <a class="brand" href={base} aria-label="Quiet Tools home"><img src={`${base}assets/optimized/quiet-tools-mark.webp`} width="44" height="44" alt="" /><span>Quiet Tools</span></a>
+  <nav class="site-nav" aria-label="Main navigation">{links.map(link => <a href={link.href} aria-current={current === link.href ? 'page' : undefined}>{link.label}</a>)}<a class="nav-button" href={`${base}apps/`}>View apps <span aria-hidden="true">↗</span></a></nav>
+  <details class="mobile-menu"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map(link => <a href={link.href} aria-current={current === link.href ? 'page' : undefined}>{link.label}</a>)}<a href={`${base}privacy/`}>Privacy</a></nav></details>
 </header>
-
 <script>
-  document.querySelectorAll<HTMLDetailsElement>('.apps-dropdown').forEach((dropdown) => {
-    const label = dropdown.querySelector<HTMLElement>('.nav-button-label');
-    label?.addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.href = label.closest('header')?.querySelector<HTMLAnchorElement>('.mobile-app-links .nav-button')?.href || '/apps/';
-    });
-    document.addEventListener('click', (event) => {
-      if (!dropdown.contains(event.target as Node)) dropdown.removeAttribute('open');
-    });
-    dropdown.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') { dropdown.removeAttribute('open'); dropdown.querySelector('summary')?.focus(); }
-    });
-  });
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  document.addEventListener('keydown', event => { if(event.key === 'Escape' && menu?.open) { menu.open = false; menu.querySelector('summary')?.focus(); } });
 </script>

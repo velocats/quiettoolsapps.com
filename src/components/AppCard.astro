@@ -1,36 +1,13 @@
 ---
 import Badge from './Badge.astro';
-import type { QuietToolApp } from '../data/apps';
-interface Props { app: QuietToolApp; featured?: boolean; idPrefix?: string; duplicate?: boolean; }
-const { app, featured = false, idPrefix = 'app', duplicate = false } = Astro.props;
+import type {QuietToolApp} from '../data/apps';
+interface Props {app: QuietToolApp;}
+const {app} = Astro.props;
 const base = import.meta.env.BASE_URL;
-const imageSrc = app.image ? `${base}${app.image}` : '';
-const fallbackSrc = app.fallbackImage ? `${base}${app.fallbackImage}` : '';
-const titleId = `${idPrefix}-${app.slug}-title`;
 ---
-<article class:list={['app-card', featured && 'app-card-featured']} style={`--accent:${app.accent || '#6FAFC0'}`} aria-labelledby={titleId}>
-  <div class:list={['app-art', `app-art-${app.slug}`]}>
-    {app.image ? (
-      <img
-        src={imageSrc}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        onerror={fallbackSrc ? `this.onerror=null;this.src='${fallbackSrc}';` : undefined}
-      />
-    ) : (
-      <span aria-hidden="true">{app.name.slice(0, 1)}</span>
-    )}
-  </div>
-  <div class="app-card-header">
-    <span class="app-category">{app.category}</span>
-    <Badge status={app.status} />
-  </div>
-  <h3 id={titleId}>{app.name}</h3>
-  <p class="tagline">{app.shortTagline}</p>
-  <p>{app.description}</p>
-  <ul class="feature-chips" aria-label={`${app.name} features`}>
-    {app.features.slice(0, featured ? 7 : 4).map((feature) => <li>{feature}</li>)}
-  </ul>
-  {app.websiteUrl && <a class="text-link" href={app.websiteUrl} aria-label={`Visit the ${app.name} website`} tabindex={duplicate ? -1 : undefined}>Visit {app.name.replace(' Planner', '')} <span aria-hidden="true">→</span></a>}
+<article class="app-card" aria-labelledby={`app-${app.slug}`}>
+  <div class="app-card-top"><img src={`${base}${app.image}`} alt="" width="72" height="72" loading="lazy" decoding="async" /><Badge status={app.status} /></div>
+  <p class="app-category">{app.category}</p><h3 id={`app-${app.slug}`}>{app.name}</h3><p class="tagline">{app.shortTagline}</p><p class="app-description">{app.description}</p>
+  <ul class="feature-chips" aria-label={`${app.name} features`}>{app.features.slice(0,3).map(feature => <li>{feature}</li>)}</ul>
+  {app.websiteUrl && <a class="text-link app-link" href={app.websiteUrl}>Explore {app.name.replace(' Planner','')} <span aria-hidden="true">↗</span></a>}
 </article>

@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 
   <section class="support-layout">
     <div class="form-card">
-      <div id="submitted-message" class="submitted-message" role="status" hidden>
+      <div id="submitted-message" class="submitted-message" role="status" tabindex="-1" hidden>
         <h2>Thanks — your message was sent.</h2>
         <p>We’ll review your request and reply to the email address you provided.</p>
       </div>
@@ -106,19 +106,19 @@ const base = import.meta.env.BASE_URL;
 
 <style>
   .support-layout { width: min(1100px, calc(100% - 2rem)); margin: 0 auto clamp(4rem, 8vw, 7rem); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .7fr); gap: 1.25rem; align-items: start; }
-  .form-card { padding: clamp(1.4rem, 4vw, 2.5rem); border: 1px solid var(--soft-border); border-radius: var(--radius); background: rgba(255,255,255,.84); box-shadow: 0 18px 46px rgba(8,43,79,.075); }
+  .form-card { padding: clamp(1.4rem, 4vw, 2.5rem); border: 1px solid var(--soft-border); border-radius: var(--radius); background: rgba(255,255,255,.84); box-shadow:none; }
   form { display: grid; gap: 1.25rem; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   label { display: grid; gap: .45rem; color: var(--deep-navy); font-weight: 800; }
-  label span { color: #587087; font-size: .88rem; font-weight: 600; }
-  input, select, textarea { width: 100%; border: 1px solid #b8c7d2; border-radius: 12px; background: #fff; color: var(--deep-navy); font: inherit; padding: .8rem .9rem; }
+  label span { color: #52525b; font-size: .88rem; font-weight: 600; }
+  input, select, textarea { width: 100%; border: 1px solid #a1a1aa; border-radius: 12px; background: #fff; color: var(--deep-navy); font: inherit; padding: .8rem .9rem; }
   textarea { resize: vertical; min-height: 10rem; }
-  input:focus, select:focus, textarea:focus { outline: 3px solid rgba(20,113,133,.2); border-color: #147185; }
+  input:focus, select:focus, textarea:focus { outline: 3px solid #18181b; outline-offset: 3px; border-color: #18181b; }
   .button { justify-self: start; border: 0; cursor: pointer; }
-  .submission-note { padding: .9rem 1rem; border-radius: 12px; background: #eef6f4; color: #174866; font-size: .92rem; }
-  .privacy-note { color: #587087; font-size: .88rem; }
+  .submission-note { padding: .9rem 1rem; border-radius: 12px; background: #f4f4f5; color: #18181b; font-size: .92rem; }
+  .privacy-note { color: #52525b; font-size: .88rem; }
   .support-aside { display: grid; gap: 1rem; }
-  .submitted-message { padding: 1.5rem; border-radius: 16px; background: #e2f2ee; color: #174866; }
+  .submitted-message { padding: 1.5rem; border-radius: 16px; background: #f4f4f5; color: #18181b; }
   .submitted-message p { margin-top: .5rem; }
   @media (max-width: 760px) { .support-layout, .field-row { grid-template-columns: 1fr; } }
 </style>
