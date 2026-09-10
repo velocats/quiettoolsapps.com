@@ -1,8 +1,8 @@
 # Quiet Tools SEO and website redesign plan
 
-Prepared September 10, 2026. Status: implementation in progress; first studio redesign and technical SEO pass completed locally.
+Prepared September 10, 2026. Status: implementation in progress; first studio redesign and technical SEO pass published and verified.
 
-Updated September 10, 2026: the user selected the Refero Awesomic style page as the visual basis for the redesign. The direction below now has an initial implementation in the repository; production publication of the redesign is pending.
+Updated September 10, 2026: the user selected the Refero Awesomic style page as the visual basis for the redesign. The initial implementation is now live at https://quiettoolsapps.com/.
 
 ## Implementation log — September 10, 2026
 
@@ -25,12 +25,15 @@ Validation completed:
 - Desktop homepage reviewed at 1440px; phone homepage and Hobby Tracker inspected at 375px; comparison page reviewed at 768px. No horizontal overflow detected in those views.
 - Mobile navigation opens and Escape closes it. Product and comparison navigation remain accessible.
 - Git whitespace check passed.
+- Published source commit `f527e4b` through the existing GitHub Pages workflow. [Deployment run](https://github.com/velocats/quiettoolsapps.com/actions/runs/34505710003) completed successfully.
+- Live homepage, About, and maintenance comparison pages return the new content and HTTPS non-www canonicals. The live sitemap contains the new routes without www URLs, and the self-hosted font is accessible.
+- Prepared [the FixLog content implementation brief](fixlog-content-implementation.md) after inspecting the local FixLog source and existing screenshot inventory. No FixLog source changes have been made yet.
 
 Remaining before calling the complete studio milestone finished:
 
 - Full accessibility, text-zoom, and reduced-motion review across every page; measured mobile performance and field Core Web Vitals have not been collected.
 - Consider adding authentic screenshots for the remaining app cards; their real app icons are currently used as the visual identifier.
-- Publish the reviewed source through the existing GitHub Pages workflow, then verify live canonicals, sitemap, and new pages. No Sites migration was performed.
+- Publication and initial live checks are complete through GitHub Pages. No Sites migration was performed.
 - Search Console baseline, sitemap submission, and Google-selected canonical inspection require property access.
 - FixLog content upgrades and the later resource/outreach work are still pending and belong to their respective product workspaces.
 
