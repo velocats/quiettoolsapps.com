@@ -9,5 +9,6 @@ const base = import.meta.env.BASE_URL;
   <div class="app-card-top"><img src={`${base}${app.image}`} alt="" width="72" height="72" loading="lazy" decoding="async" /><Badge status={app.status} /></div>
   <p class="app-category">{app.category}</p><h3 id={`app-${app.slug}`}>{app.name}</h3><p class="tagline">{app.shortTagline}</p><p class="app-description">{app.description}</p>
   <ul class="feature-chips" aria-label={`${app.name} features`}>{app.features.slice(0,3).map(feature => <li>{feature}</li>)}</ul>
+  {app.status === 'coming-soon' && <p class="app-availability">Coming soon to the App Store</p>}
   {app.websiteUrl && <a class="text-link app-link" href={app.websiteUrl}>Explore {app.name.replace(' Planner','')} <span aria-hidden="true">↗</span></a>}
 </article>

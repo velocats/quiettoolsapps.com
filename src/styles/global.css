@@ -15,3 +15,5 @@
 /* Keep focus visible on inverted product and studio sections. */
 .studio-band a:focus-visible,.privacy-band a:focus-visible{outline-color:#fff}
 @media(min-width:701px) and (max-width:1000px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.hero h1{font-size:clamp(2rem,4.5vw,3rem)}}
+
+.app-availability{font-size:.85rem;color:var(--muted);margin-bottom:16px}

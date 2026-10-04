@@ -19,6 +19,20 @@ export type QuietToolApp = {
 
 export const apps: QuietToolApp[] = [
   {
+    name: 'Cast Your Line',
+    slug: 'cast-your-line',
+    status: 'coming-soon',
+    shortTagline: 'Keep the days you spend fishing.',
+    description:
+      'A private fishing journal for iPhone, iPad, and Mac. Keep trips, catches, places, photos, routes, and notes together, then revisit them through your calendar, yearly recaps, and keepsake photo books. No account required.',
+    features: ['Trip and catch logs', 'Optional GPS routes', 'Recaps and photo books'],
+    category: 'Fishing & outdoors',
+    websiteUrl: 'https://castyourlineapp.com/',
+    supportUrl: 'https://castyourlineapp.com/support/',
+    privacyUrl: 'https://castyourlineapp.com/privacy/',
+    image: 'assets/app-icons/cast-your-line.png',
+  },
+  {
     name: 'Hobby Tracker',
     slug: 'hobby-tracker',
     status: 'available',
