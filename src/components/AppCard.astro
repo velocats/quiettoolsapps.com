@@ -6,7 +6,7 @@ const {app} = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <article class="app-card" aria-labelledby={`app-${app.slug}`}>
-  <div class="app-card-top"><img src={`${base}${app.image}`} alt="" width="72" height="72" loading="lazy" decoding="async" />{app.slug === 'cast-your-line' && app.appStoreUrl ? <a class="cast-app-store-link" href={app.appStoreUrl} target="_blank" rel="noopener"><img class="cast-app-store-badge" src={`${base}assets/app-store-badge.svg`} width="120" height="40" alt={`Download ${app.name} on the App Store`} /></a> : <Badge status={app.status} />}</div>
+  <div class="app-card-top"><img src={`${base}${app.image}`} alt="" width="72" height="72" loading="lazy" decoding="async" />{app.appStoreUrl ? <a class="app-store-link" href={app.appStoreUrl} target="_blank" rel="noopener"><img class="app-store-badge" src={`${base}assets/app-store-badge.svg`} width="120" height="40" alt={`Download ${app.name} on the App Store`} /></a> : <Badge status={app.status} />}</div>
   <p class="app-category">{app.category}</p><h3 id={`app-${app.slug}`}>{app.name}</h3><p class="tagline">{app.shortTagline}</p><p class="app-description">{app.description}</p>
   <ul class="feature-chips" aria-label={`${app.name} features`}>{app.features.slice(0,3).map(feature => <li>{feature}</li>)}</ul>
   {app.status === 'coming-soon' && <p class="app-availability">Coming soon to the App Store</p>}
@@ -14,7 +14,7 @@ const base = import.meta.env.BASE_URL;
 </article>
 
 <style>
-  .cast-app-store-link{display:inline-flex;flex-shrink:0;border-radius:6px}
-  .cast-app-store-link:focus-visible{outline:3px solid #147185;outline-offset:4px}
-  .app-card-top .cast-app-store-badge{display:block;width:120px;height:auto;border-radius:0}
+  .app-store-link{display:inline-flex;flex-shrink:0;border-radius:6px}
+  .app-store-link:focus-visible{outline:3px solid #147185;outline-offset:4px}
+  .app-card-top .app-store-badge{display:block;width:120px;height:auto;border-radius:0}
 </style>
