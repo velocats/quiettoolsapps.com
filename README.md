@@ -63,7 +63,7 @@ The existing `.github/workflows/deploy.yml` builds and deploys pushes to `main`.
 
 See [the project plan](docs/seo-strategy-2026-09-10.md) for the reference-based visual direction, implementation log, SEO backlog, and remaining verification work.
 
-Shared design tokens live in `src/styles/global.css`. The homepage uses a data-driven app grid with seven apps, including Cast Your Line (coming soon). The collection count and hero icon labels follow the app directory automatically. About and maintenance-app comparison pages support product discovery. DM Sans is self-hosted in `public/assets/fonts/` with 400, 500, and 600 weights; the system sans-serif stack remains the fallback.
+Shared design tokens live in `src/styles/global.css`. The homepage uses a data-driven app grid with seven apps, including Cast Your Line (available on the App Store). The collection count and hero icon labels follow the app directory automatically. About and maintenance-app comparison pages support product discovery. DM Sans is self-hosted in `public/assets/fonts/` with 400, 500, and 600 weights; the system sans-serif stack remains the fallback.
 
 Optimized WebP assets in `public/assets/optimized/` are used for the studio mark, app icons, and Hobby Tracker screenshots. Keep original assets when regenerating derivatives.
 
@@ -80,7 +80,7 @@ public/assets/app-icons/homesteadkeeper.png
 public/assets/app-icons/aroundthehouse.png
 ```
 
-App cards use the image path in `src/data/apps.ts`; ensure each referenced asset exists. Cast Your Line uses its official website icon. Set its status to `available` and add `appStoreUrl` when its App Store listing is ready.
+App cards use the image path in `src/data/apps.ts`; ensure each referenced asset exists. Cast Your Line uses its official website icon. Its App Store badge and homepage icon link to its listing through `appStoreUrl`.
 
 To download the live website icons for the Quiet Tools apps, run:
 
